@@ -1,0 +1,181 @@
+<template>
+  <div class="list">
+    <header class="w_title">
+      <ul class="clearfix">
+        <li class="wb_search_result">
+          <van-icon name="search" class="srh_icon icon-a-search01"/>
+          <a href="#" class="search_work">搜索商品</a>
+        </li>
+        <!-- <li class="wb_title_middle wb_search">
+          <form action="">
+            <van-icon name="search" class="srh_icon icon-a-search01"/>
+            <input type="search" class="input_search" placeholder="搜索商品" maxlength="30">
+            <span class="clean_search">
+              <van-icon name="cross" class="icon-a-close02"/>
+            </span>
+          </form>
+        </li>
+        <li class="rewrite_right srh_cancel">
+          <a href="javascript: void(0);" class="right_back">取消</a>
+        </li>-->
+      </ul>
+    </header>
+    <section class="main">
+      <div class="scroll_wrap">
+        <ul>
+          <li class="on">
+            <a href="javascript:void(0)">推荐</a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" category-code='3'>顶级品牌</a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" category-code='4'>奢华品牌</a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" category-code='1029'>高级品牌</a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" category-code='5'>轻奢时尚</a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" category-code='6'>年轻潮牌</a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" category-code='7'>国产智能</a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" category-code='8'>表带</a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" category-code='1003'>维护保养</a>
+          </li>
+          <li class="not_goods-category">
+            <a href="javascript:void(0)">二手商城</a>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+    <footer>
+
+    </footer>
+  </div>
+</template>
+<script>
+export default {
+
+}
+</script>
+<style scoped>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  ul li {
+    list-style: none;
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+  }
+  .w_title {
+    width: 100%;
+    height: 0.44rem;
+    line-height: 0.44rem;
+    max-width: 6.40rem;
+    margin: 0 auto;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  .clearfix {
+    position: relative;
+  }
+  .wb_search_result {
+    height: 0.28rem;
+    line-height: 0.28rem;
+    margin-top: 0.08rem;
+    margin-right: 0.06rem;
+    background: #f1f1f1;
+    border-radius: 1rem;
+    font-size: 0.14rem;
+    color: #333;
+    margin-left: 0.10rem;
+  }
+  .srh_icon {
+    position: absolute;
+    top: 0.08rem;
+    left: 0.11rem;
+  }
+  .icon-a-search01 {
+    display: block;
+    width: 0.12rem;
+    height: 0.12rem;
+    margin-left: 0.10rem;
+    font-size: 0.14rem;
+  }
+  .search_work {
+    position: relative;
+    display: block;
+    height: 100%;
+    padding: 0 0.32rem;
+    font-size: 0.12rem;
+    color: #999;
+  }
+  .wb_search {
+    height: 0.28rem;
+    line-height: 0.28rem;
+    margin-top: 0.08rem;
+    margin-right: 0.44rem;
+    border-radius: 1rem;
+    background: #f1f1f1;
+    font-size: 0.12rem;
+    color: #999;
+  }
+  .wb_title_middle {
+    margin-left: 0.12rem;
+    margin-right: 0.56rem;
+  }
+  .input_search {
+    width: 90%;
+    height: 0.28rem;
+    font-size: 0.12rem;
+    color: #333;
+    background: #f1f1f1;
+    padding-left: 0.32rem;
+    border: none;
+    box-sizing: border-box;
+    border-radius: 1rem;
+  }
+  .rewrite_right {
+    margin-right: 0.08rem;
+    text-align: center;
+    position: absolute;
+    right: 0.08rem;
+    top: -0.43rem;
+  }
+  .right_back {
+    color: #477db3;
+    font-size: 0.14rem;
+  }
+  .icon-a-close02 {
+    width: 0.16rem;
+    height: 0.16rem;
+    font-size: 0.14rem;
+  }
+  .main {
+    padding-top: 0.44rem;
+  }
+  .scroll_wrap li a {
+    width: 0.61rem;
+    display: block;
+    line-height: 0.22rem;
+    font-size: 0.12rem;
+    margin: 0.13rem 0.11rem;
+    padding: 0;
+    color: #999;
+  }
+</style>
