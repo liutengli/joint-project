@@ -27,7 +27,6 @@ export default {
 <style scoped>
 .app{
   width:100%;
-  height: auto;
   overflow: hidden;
   color: #666
 }
