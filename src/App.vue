@@ -1,12 +1,8 @@
 <template>
   <div id="app">
+    <router-view/>
     <div class="nav-bar">
       <van-tabbar v-model="active" @change="changeHande">
-        <!-- <van-tabbar-item info="3">
-          <span>自定义</span>
-          <img slot="icon" slot-scope="props" :src="props.active ? icon.active : icon.normal">
-        </van-tabbar-item>-->
-
         <van-tabbar-item icon="wap-home">首页</van-tabbar-item>
         <van-tabbar-item icon="comment-o">选表</van-tabbar-item>
         <van-tabbar-item icon="shopping-cart-o">购物车</van-tabbar-item>
@@ -64,16 +60,7 @@ export default {
   }
 };
 </script>
-
 <style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 .van-icon {
   font-size: 0.26rem;
 }
@@ -82,5 +69,6 @@ export default {
 }
 .van-tabbar {
   height: 65px;
+  border-top: 0.01rem solid #eee;
 }
 </style>
