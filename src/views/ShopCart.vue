@@ -11,22 +11,41 @@
     </header>
     <section>
       <div class="cart-contnt">
+        <van-checkbox-group v-model="List">
         <div class="shop-blocks" data-shop-code="22">
-          <div class="shop-title">
-            <span class="h"
-              :class="{'h-select':true}"
-              @click="SelectedHandle(i)"
-             >
-              <i class="van-icon van-icon-success">
-              </i>
-            </span>
-            <p>天梭11</p>
-          </div>
           <div class="shop-desc">
-            <span class="h"
-              :class="{'h-select':true}"
-              @click="SelectedHandle()"
-            ><i class="van-icon van-icon-success"></i></span>
+             <van-checkbox
+                :class="{'h':true}"
+                checked-color='red'
+                :name= "result"
+              >
+              </van-checkbox>
+            <div class="shop-detail">
+              <van-card
+                num="2"
+                price="2.00"
+                desc="描述信息"
+                title="商品标题"
+                thumb="https://gaitaobao4.alicdn.com/tfscom/i1/TB14l8vHFXXXXbdXVXXXXXXXXXX_!!0-item_pic.jpg_240x240xz.jpg_.webp"
+                origin-price="200"
+
+              />
+            </div>
+            <!-- 编辑时显示 -->
+            <div class="shop-editor " :class="{'hidden':shopdel}">
+              <p><b>-</b><b>1</b><b>+</b></p>
+              <van-button type="danger"  :class="{'shop-del':true}" @click="DelShopHandle(id)">删除</van-button>
+            </div>
+          </div>
+        </div>
+        <div class="shop-blocks" data-shop-code="22">
+          <div class="shop-desc">
+             <van-checkbox
+                :class="{'h':true}"
+                checked-color='red'
+                :name="result1"
+              >
+              </van-checkbox>
             <div class="shop-detail">
               <van-card
                 num="2"
@@ -45,14 +64,15 @@
             </div>
           </div>
         </div>
+        </van-checkbox-group>
       </div>
       <div class="TotalPri" >
         <van-submit-bar
-          :price="3050"
-          button-text="结算"
+          :price="totalPrice"
+          :button-text="submitBarText"
           @submit="onSubmit"
           >
-          <van-checkbox v-model="checked">全选</van-checkbox>
+          <van-checkbox v-model="checked" checked-color='red'	>全选</van-checkbox>
         </van-submit-bar>
       </div>
       <div class="Total" :class="{'TotalEditor':shopdel}">
@@ -60,7 +80,7 @@
           button-text="删除"
           @submit="onSubmit"
           >
-          <van-checkbox v-model="checked">全选</van-checkbox>
+          <van-checkbox v-model="checked" checked-color='red'>全选</van-checkbox>
           <a href="javascript:void(0);"  class="removeCollect">移入收藏</a>
         </van-submit-bar>
       </div>
@@ -72,6 +92,8 @@
 export default {
   data() {
     return {
+      result:{'id':1,'count':2,price:22.0},
+       result1:{'id':1,'count':2,price:23.0},
       checked:'',
       shopdel:true,
       List:[],
@@ -92,7 +114,26 @@ export default {
     }
   },
   computed:{
-
+    totalPrice() {
+      var total=0;
+        this.List.forEach(item=>{
+          total+=(item.price*100);
+          console.log(total)
+        })
+      return total;
+    },
+    submitBarText() {
+      if(this.List.length){
+        var count=0;
+        this.List.forEach(item=>{
+          count+=item.count;
+        })
+        return '结算' + (count ? `(${count})` : '');
+      }else{
+         return '结算';
+      }
+      
+    },
   }
 };
 </script>
@@ -136,58 +177,35 @@ export default {
   display: none !important;
 }
 section {
-  margin-top: 0.6rem;
+  margin-top: 0.5rem;
   margin-bottom: 1.15rem;
 }
 .shop-blocks {
   width: 100%;
-  height: 1.72rem;
+  height: 1.22rem;
   margin-bottom: 12px;
   background-color: #fff;
   position: relative;
+  padding-top: 0.1rem;
 }
-.shop-title {
-  height: 0.4rem;
-  font-size: 0.14rem;
-  color: #333;
-}
-.shop-title p {
-  width: 87%;
-  margin-left: 0.17rem;
+.shop-desc .h {
+  width: 0.2rem;
+  height: 0.2rem;
+   margin: 0.42rem 0 0 0.13rem;
   float: left;
-  line-height: 0.4rem;
-  border-bottom: 1px solid #cecece;
+  display: flex;
+  
 }
-.shop-title .h,.shop-desc .h {
-  width: 0.18rem;
-  height: 0.18rem;
-  border: 1px solid #ccc;
-  border-radius: 50%;
-  margin: 0.13rem 0 0 0.13rem;
-  float: left;
-  line-height: 0.23rem;
-  text-align: center;
+ .h  .van-icon-success{
+   display: flex !important;
 }
-.h i{
-  font-size: 0.14rem;
-}
-.h-select{
-  color: #fff;
-  border-color: #1989fa;
-  background-color: #1989fa;
+.h >>> i.van-icon {
+   float: left !important;
 }
 .shop-desc {
   height: 0.98rem;
   margin-top: 0.18rem;
   width: 100%;
-}
-.shop-desc .h {
-  margin: 0.42rem 0 0 0.13rem;
-}
-.shop-desc .h i{
-  float: left;
-  line-height: 21px;
-  padding-left: 2px;
 }
 .shop-desc .shop-detail {
   float: right;
@@ -215,7 +233,7 @@ section {
   background: #fff;
   position: absolute;
   right: 0;
-  top: 0.41rem;
+  top: 0;
   z-index: 1;
 }
 .van-button--danger {
