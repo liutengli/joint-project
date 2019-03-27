@@ -7,7 +7,6 @@ import Search from './views/Search.vue'
 
 //使用vue-router
 Vue.use(Router)
-<<<<<<< HEAD
 const router = new Router({
   routes: [{
     path: '/',
@@ -19,8 +18,6 @@ const router = new Router({
     component: Search
   }]
 })
-=======
->>>>>>> ec427b750e41985edef7ece7a266bcd558cfeab9
 
 const router =new Router({
   //路由表
