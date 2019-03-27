@@ -17,14 +17,15 @@
               :class="{'h-select':true}"
               @click="SelectedHandle(i)"
              >
-              <i class="van-icon van-icon-success"></i>
+              <i class="van-icon van-icon-success">
+              </i>
             </span>
             <p>天梭11</p>
           </div>
           <div class="shop-desc">
             <span class="h"
               :class="{'h-select':true}"
-              @click="SelectedHandle(i)"
+              @click="SelectedHandle()"
             ><i class="van-icon van-icon-success"></i></span>
             <div class="shop-detail">
               <van-card
@@ -80,8 +81,8 @@ export default {
     showDel(){
       this.shopdel= ! this.shopdel;
     },
-    SelectedHandle(i){
-
+    SelectedHandle(){
+      
     },
     onSubmit(){
 
@@ -91,7 +92,7 @@ export default {
     }
   },
   computed:{
-    
+
   }
 };
 </script>
