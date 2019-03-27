@@ -1,5 +1,6 @@
 <template>
-  <header class="w_title">
+  <div class="productlist">
+    <header class="w_title">
       <ul class="clearfix">
         <li class="search01">
           <div class="wb_back">
@@ -23,17 +24,120 @@
         </li> -->
       </ul>
     </header>
+    <nav  class="nav01">
+      <van-tabs v-model="active" class="nav_content">
+        <van-tab title="综合排序">综合排序</van-tab>
+        <van-tab title="销量领先">销量领先</van-tab>
+        <van-tab title="价格排序">价格排序</van-tab>
+      </van-tabs>
+      <van-button size="normal" class="toFilter" @click="isShow">筛选</van-button>
+    </nav>
+    <van-popup v-model="show" position="right" :overlay="false" class="mengceng">
+      <div class="mengcheng_top">
+        <van-icon name="cross" class="mc_close" @click="isShow"/>
+        <p class="mc_p">筛选</p>
+      </div>
+      <div class="mc_main">
+        <div class="mc_severse">
+          <p class="mc_severse_title">万表服务</p>
+          <div class="mc_btns">
+            <span class="mc_btn">
+              闪电发货
+              <van-icon name="cross" class="mc_close_01"/>
+            </span>
+            <span class="mc_btn">
+              闪电发货
+              <van-icon name="cross" class="mc_close_01"/>
+            </span>
+            <span class="mc_btn">
+              闪电发货
+              <van-icon name="cross" class="mc_close_01"/>
+            </span>
+            <span class="mc_btn">
+              闪电发货
+              <van-icon name="cross" class="mc_close_01"/>
+            </span>
+          </div>
+        </div>
+        <div class="mc_severse">
+          <p class="mc_severse_title">万表服务</p>
+          <div class="mc_btns">
+            <span class="mc_btn">
+              闪电发货
+            </span>
+            <span class="mc_btn">
+              闪电发货
+            </span>
+            <span class="mc_btn">
+              闪电发货
+            </span>
+            <span class="mc_btn">
+              闪电发货
+            </span>
+          </div>
+        </div>
+        <div class="mc_severse">
+          <p class="mc_severse_title">价格区间</p>
+          <div class="mc_btns">
+            <span class="price_content_input">
+              <input type="text" class="price_min" placeholder="最低价" maxlength="9" onkeyup="value=value.replace(/[^\d]/g,'')">
+            </span>
+            <span class="price_content_xian"></span>
+            <span class="price_content_input">
+              <input type="text" class="price_max" placeholder="最高价" maxlength="9" onkeyup="value=value.replace(/[^\d]/g,'')">
+            </span>
+          </div>
+        </div>
+        <div class="mc_severse brand">
+          <div class="brand_title">
+            <span class="brand_name">品牌</span>
+            <span class="brand_kongbai"></span>
+            <span class="brand_more">
+              全部品牌
+              <van-icon name="arrow" class="brand_icon"/>
+            </span>
+          </div>
+          <div class="mc_btns">
+            <span class="mc_btn">
+              闪电发货
+              <van-icon name="cross" class="mc_close_01"/>
+            </span>
+            <span class="mc_btn">
+              闪电发货
+              <van-icon name="cross" class="mc_close_01"/>
+            </span>
+            <span class="mc_btn">
+              闪电发货
+              <van-icon name="cross" class="mc_close_01"/>
+            </span>
+            <span class="mc_btn">
+              闪电发货
+              <van-icon name="cross" class="mc_close_01"/>
+            </span>
+          </div>
+        </div>
+
+      </div>
+      <div class="content_footer">
+        <div class="clear_btn">清空</div>
+        <div class="ensure_btn">
+          <span class="btn_sure">确定</span>
+        </div>
+      </div>
+    </van-popup>
+  </div>
 </template>
 <script>
 export default {
   data() {
     return {
-
+      active: 2,
+      show: false,
     }
   },
   methods: {
-    searchHandle() {
-
+    isShow() {
+      this.show = !this.show;
     }
   }
 }
@@ -146,4 +250,191 @@ export default {
     border: 1px solid #fff;
     border-radius: 50%;
   }
+  .nav01 {
+    margin-top: 45px;
+    font-size: 14px;
+    position: relative;
+    /* top: 45px;
+    left: 0; */
+  }
+  .nav_content {
+    padding-top: 44px !important;
+    width: 75%;
+  }
+  .toFilter {
+    width: 24%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    border-left: 1px solid #eee;
+  }
+  .mengceng {
+    width: 86%;
+    height: 100%;
+    background: #fff;
+    font-size: 16px;
+  }
+  .mengcheng_top {
+    width: 100%;
+    height: 44px;
+    background-color: #f1f1f1;
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
+  .mc_close {
+    width: 44px;
+    height: 44px;
+    text-align: center;
+    line-height: 44px;
+  }
+  .mc_p {
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    position: absolute;
+    left: 44px;
+    top: 0;
+    text-align: center;
+    color: #333;
+  }
+  .mc_main {
+    /* position: relative; */
+    margin-top: 44px;
+  }
+  .mc_severse {
+    margin: 0 12px;
+    border-bottom: 1px solid #f2f2f2;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    position: relative;
+  }
+  .mc_severse_title {
+    font-size: 12px;
+    color: #333;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .mc_btns {
+    width: 100%;
+    display: inline-block;
+  }
+  .mc_btn {
+    width: 31%;
+    margin-right: 2%;
+    text-align: center;
+    height: 40px;
+    float: left;
+    line-height: 40px;
+    background-color: #f7f7f7;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #333;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 3px;
+    position: relative;
+    margin-bottom: 5px;
+  }
+  .mc_btn .mc_close_01 {
+    display: block;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    font-size: 12px;
+  }
+  .active {
+    border: 1px solid #D90000;
+    color: #D90000;
+    background-color: #fff;
+  }
+  .price_content_input {
+    width:30%;
+    margin-right: 1%;
+    margin-bottom: 5px;
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    background-color: #f7f7f7;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+.price_content_input input {
+    width: 100%;
+    border: 0;
+    background: none;
+    outline: none;
+    font-size: 12px;
+    color: #333;
+    text-align: center;
+}
+.price_content_xian {
+    width: 5%;
+    height: 1px;
+    margin-right: 2%;
+    margin-left: 2%;
+    margin-top: 6%;
+    float: left;
+    background: #333;
+}
+.brand_title {
+  position: relative;
+  font-size: 12px;
+  color: #333333;
+  margin-bottom: 10px;
+  width: 100%;
+  overflow: hidden;
+  display: inline-flex;
+}
+.brand_name {
+    display: inline-block;
+    font-weight: bold;
+    float: left;
+    margin-right: 10px;
+    text-align: left;
+}
+.brand_more {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #999;
+}
+.brand_more .brand_icon {
+  width: 12px;
+  height: 12px;
+  font-size: 12px;
+}
+.mengceng .content_footer {
+    width: 100%;
+    height: 66px;
+    border-top: 1px solid #CCC;
+    background: #fff;
+    color: #333;
+    /* position: fixed !important;
+    right: 0;
+    bottom: 0;
+    z-index: 2; */
+}
+.clear_btn, .ensure_btn {
+  width: 50%;
+    line-height: 66px;
+    font-size: 16px;
+    text-align: center;
+    float: left;
+}
+.ensure_btn {
+}
+.btn_sure {
+    display: inline-block;
+    width: 127px;
+    height: 42px;
+    line-height: 42px;
+    margin-top: 12px;
+    border-radius: 3px;
+    color: #fff;
+    background: #D90000;
+}
 </style>
