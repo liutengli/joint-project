@@ -1,38 +1,35 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import List from './components/List.vue'
-import ShopCart from './views/ShopCart.vue'
+
 import Index from './views/Index.vue'
 import Search from './views/Search.vue'
+import Detail from './views/Detail.vue'
+import List from './views/List.vue'
+import ShopCart from './views/ShopCart.vue'
+
 
 //使用vue-router
 Vue.use(Router)
 const router = new Router({
-  routes: [{
-    path: '/',
-    name: 'Index',
-    component: Index,
-  },{
-    path: '/search',
-    name: 'Search',
-    component: Search
-  }]
-})
-
-const router =new Router({
   //路由表
-  routes:[
-    {
-      path:'/shopcart',
-      name:'ShopCart',
-      component:ShopCart
-    },
+  routes: [
     {
       path: '/',
-      name: 'index',
+      name: 'Index',
       component: Index
-    },
-    {
+    }, {
+      path: '/search',
+      name: 'Search',
+      component: Search
+    },{
+      path: '/detail',
+      name: 'Detail',
+      component: Detail
+    },{
+      path: '/shopcart',
+      name: 'ShopCart',
+      component: ShopCart
+    },{
       path: '/list',
       name: 'List',
       component: List,

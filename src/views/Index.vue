@@ -11,7 +11,7 @@
       <article>
         <van-swipe :autoplay="3000" indicator-color="white">
           <van-swipe-item v-for="(img,i) in imgs" :key="i">
-            <a href="#">
+            <a href="javascript:void(0);" @click="jumpHandle">
               <img class="swipe-img" :src="img" alt>
             </a>
           </van-swipe-item>
@@ -191,11 +191,17 @@ export default {
       gundongImgs
     };
   },
-  methods:{
-    searchHandle(){
-       this.$router.push({
-          name:'Search'
-        })
+  methods: {
+    searchHandle() {
+      this.$router.push({
+        name: "Search"
+      });
+    },
+    jumpHandle() {
+      console.log("aaa")
+      this.$router.push({
+        name: "Detail"
+      });
     }
   }
 };

@@ -1,13 +1,6 @@
 <template>
   <div id="app">
-<<<<<<< HEAD
     <router-view/>
-=======
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <!-- 用来放各个组件 -->
-    <router-view/>
-
->>>>>>> ec427b750e41985edef7ece7a266bcd558cfeab9
     <div class="nav-bar">
       <van-tabbar v-model="active" @change="changeHande">
         <van-tabbar-item icon="wap-home">首页</van-tabbar-item>
@@ -30,7 +23,7 @@ export default {
         this.active = 3;
       } else if (link == "List") {
         this.active = 1;
-      } else if (link == "SC") {
+      } else if (link == "ShopCart") {
         this.active = 2;
       }
     });
@@ -55,7 +48,7 @@ export default {
           break;
         case 2:
           this.$router.push({
-            name: "SC"
+            name: "ShopCart"
           });
           break;
         case 3:
@@ -69,27 +62,6 @@ export default {
 };
 </script>
 <style>
-<<<<<<< HEAD
-=======
- *{
-    margin: 0;
-    padding: 0;
-  }
-  html,body{
-    height:100%;
-  }
-  body{
-    display: flex;
-    flex-direction: column;
-  }
-  section{
-    flex: 1;
-    overflow: auto;
-  }
-  header{
-     flex-shrink: 0;
-  }
->>>>>>> ec427b750e41985edef7ece7a266bcd558cfeab9
 .van-icon {
   font-size: 0.26rem;
 }

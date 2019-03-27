@@ -6,6 +6,8 @@ import router from './router'
 import App from './App.vue'
 
 
+
+
 Vue.config.productionTip = false
 Vue.use(Vant)
 
