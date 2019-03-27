@@ -98,5 +98,11 @@ export default {
 .van-tabbar {
   height: 65px;
 }
+body{
+  background-color: #f1f1f1
+}
+#app{
+  padding-bottom: 0.6rem;
+}
 
 </style>
