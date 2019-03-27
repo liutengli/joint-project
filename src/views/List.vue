@@ -4,25 +4,25 @@
       <ul class="clearfix">
         <li class="wb_search_result">
           <van-icon name="search" class="srh_icon icon-a-search01"/>
-          <a href="#" class="search_work">搜索商品</a>
+          <a href="javascript: void(0);" class="search_work" @click="searchProductsHandle">搜索商品</a>
         </li>
-        <!-- <li class="wb_title_middle wb_search">
+        <li class="wb_title_middle wb_search">
           <form action="">
             <van-icon name="search" class="srh_icon icon-a-search01"/>
             <input type="search" class="input_search" placeholder="搜索商品" maxlength="30">
             <span class="clean_search">
-              <van-icon name="cross" class="icon-a-close02"/>
+              <van-icon name="cross" class="icon-a-close02" @click="noSearchHandle"/>
             </span>
           </form>
         </li>
         <li class="rewrite_right srh_cancel">
-          <a href="javascript: void(0);" class="right_back">取消</a>
-        </li>-->
+          <a href="javascript: void(0);" class="right_back" @click="noSearchHandle">取消</a>
+        </li>
       </ul>
     </header>
     <section class="main">
       <div class="scroll_wrap scroll_wrap_left">
-        <ul>
+        <ul class="two_stage_title">
           <li class="on">
             <a href="javascript:void(0)">推荐</a>
           </li>
@@ -275,7 +275,32 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
 
+    }
+  },
+  created() {
+
+  },
+  methods: {
+    searchProductsHandle() {
+      const wsr = document.querySelector('.wb_search_result');
+      const ws = document.querySelector('.wb_search');
+      const rr = document.querySelector('.rewrite_right')
+      wsr.style.display = 'none';
+      ws.style.display = 'block';
+      rr.style.display = 'block';
+    },
+    noSearchHandle() {
+      const wsr = document.querySelector('.wb_search_result');
+      const ws = document.querySelector('.wb_search');
+      const rr = document.querySelector('.rewrite_right')
+      wsr.style.display = 'block';
+      ws.style.display = 'none';
+      rr.style.display = 'none';
+    }
+  }
 }
 </script>
 <style scoped>
@@ -349,6 +374,7 @@ export default {
     background: #f1f1f1;
     font-size: 0.12rem;
     color: #999;
+    display: none;
   }
   .wb_title_middle {
     margin-left: 0.12rem;
@@ -371,6 +397,7 @@ export default {
     position: absolute;
     right: 0.08rem;
     top: -0.43rem;
+    display: none;
   }
   .right_back {
     color: #477db3;

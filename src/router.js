@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import List from './views/List.vue'
 import ShopCart from './views/ShopCart.vue'
 import Index from './views/Index.vue'
+import ProductsList from './views/ProductsList.vue'
 
 //使用vue-router
 Vue.use(Router)
@@ -25,6 +26,11 @@ const router =new Router({
       path: '/list',
       name: 'List',
       component: List,
+    },
+    {
+      path: '/productslist',
+      name: 'ProductsList',
+      component: ProductsList,
     }
   ]
 })
