@@ -1,11 +1,18 @@
 <template>
   <div id="app">
+<<<<<<< HEAD
     <router-view/>
+=======
+    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+    <!-- 用来放各个组件 -->
+    <router-view/>
+
+>>>>>>> ec427b750e41985edef7ece7a266bcd558cfeab9
     <div class="nav-bar">
       <van-tabbar v-model="active" @change="changeHande">
         <van-tabbar-item icon="wap-home">首页</van-tabbar-item>
         <van-tabbar-item icon="comment-o">选表</van-tabbar-item>
-        <van-tabbar-item icon="shopping-cart-o">购物车</van-tabbar-item>
+        <van-tabbar-item icon="shopping-cart-o" :to="{name:'ShopCart'}">购物车</van-tabbar-item>
         <van-tabbar-item icon="manager-o">我的</van-tabbar-item>
       </van-tabbar>
     </div>
@@ -13,6 +20,7 @@
 </template>
 
 <script>
+
 export default {
   created() {
     this.$eventBus.$on("navToZX", link => {
@@ -61,6 +69,27 @@ export default {
 };
 </script>
 <style>
+<<<<<<< HEAD
+=======
+ *{
+    margin: 0;
+    padding: 0;
+  }
+  html,body{
+    height:100%;
+  }
+  body{
+    display: flex;
+    flex-direction: column;
+  }
+  section{
+    flex: 1;
+    overflow: auto;
+  }
+  header{
+     flex-shrink: 0;
+  }
+>>>>>>> ec427b750e41985edef7ece7a266bcd558cfeab9
 .van-icon {
   font-size: 0.26rem;
 }
@@ -71,4 +100,5 @@ export default {
   height: 65px;
   border-top: 0.01rem solid #eee;
 }
+
 </style>
