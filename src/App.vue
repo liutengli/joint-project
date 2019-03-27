@@ -71,24 +71,6 @@ export default {
 </script>
 
 <style>
- *{
-    margin: 0;
-    padding: 0;
-  }
-  html,body{
-    height:100%;
-  }
-  body{
-    display: flex;
-    flex-direction: column;
-  }
-  section{
-    flex: 1;
-    overflow: auto;
-  }
-  header{
-     flex-shrink: 0;
-  }
 .van-icon {
   font-size: 0.26rem;
 }
