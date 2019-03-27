@@ -12,75 +12,50 @@
     <section>
       <div class="cart-contnt">
         <van-checkbox-group v-model="List">
-        <div class="shop-blocks" data-shop-code="22">
+        <div class="shop-blocks"  v-for="p in shoplist" :key="p._id">
           <div class="shop-desc">
              <van-checkbox
                 :class="{'h':true}"
                 checked-color='red'
-                :name= "result"
+                :name="p"
               >
               </van-checkbox>
             <div class="shop-detail">
               <van-card
-                num="2"
-                price="2.00"
-                desc="描述信息"
-                title="商品标题"
-                thumb="https://gaitaobao4.alicdn.com/tfscom/i1/TB14l8vHFXXXXbdXVXXXXXXXXXX_!!0-item_pic.jpg_240x240xz.jpg_.webp"
-                origin-price="200"
+                :num="p.quantity"
+                :price="p.product.price"
+                :desc="p.product.descriptions"
+                :title="p.product.name"
+                :thumb="serverurl+p.product.coverImg"
+                :origin-price="200"
 
               />
             </div>
             <!-- 编辑时显示 -->
             <div class="shop-editor " :class="{'hidden':shopdel}">
-              <p><b>-</b><b>1</b><b>+</b></p>
+              <p><b>-</b><b>{{p.quantity}}</b><b>+</b></p>
               <van-button type="danger"  :class="{'shop-del':true}" @click="DelShopHandle(id)">删除</van-button>
             </div>
           </div>
         </div>
-        <div class="shop-blocks" data-shop-code="22">
-          <div class="shop-desc">
-             <van-checkbox
-                :class="{'h':true}"
-                checked-color='red'
-                :name="result1"
-              >
-              </van-checkbox>
-            <div class="shop-detail">
-              <van-card
-                num="2"
-                price="2.00"
-                desc="描述信息"
-                title="商品标题"
-                thumb="https://gaitaobao4.alicdn.com/tfscom/i1/TB14l8vHFXXXXbdXVXXXXXXXXXX_!!0-item_pic.jpg_240x240xz.jpg_.webp"
-                origin-price="200"
-                thumb-link
-              />
-            </div>
-            <!-- 编辑时显示 -->
-            <div class="shop-editor " :class="{'hidden':shopdel}">
-              <p><b>-</b><b>1</b><b>+</b></p>
-              <van-button type="danger"  :class="{'shop-del':true}" @click="DelShopHandle(id)">删除</van-button>
-            </div>
-          </div>
-        </div>
+        
         </van-checkbox-group>
       </div>
       <div class="TotalPri" >
         <van-submit-bar
           :price="totalPrice"
           :button-text="submitBarText"
-          @submit="onSubmit"
+          @submit="提交函数"
           >
-          <van-checkbox v-model="checked" checked-color='red'	>全选</van-checkbox>
+          <van-checkbox v-model=checked checked-color='red'	@click="onSubmit">全选</van-checkbox>
         </van-submit-bar>
       </div>
       <div class="Total" :class="{'TotalEditor':shopdel}">
         <van-submit-bar
           button-text="删除"
-          @submit="onSubmit"
+          @submit="删除函数"
           >
-          <van-checkbox v-model="checked" checked-color='red'>全选</van-checkbox>
+          <van-checkbox v-model=checked checked-color='red' @click="onSubmit">全选</van-checkbox>
           <a href="javascript:void(0);"  class="removeCollect">移入收藏</a>
         </van-submit-bar>
       </div>
@@ -89,36 +64,53 @@
 </template>
 
 <script>
+import { Checkbox, CheckboxGroup, Card, SubmitBar, Toast } from 'vant';
+import {getShopCart} from '../servers/user.js'
+import {serverurl} from '../utils/config'
+
 export default {
   data() {
     return {
-      result:{'id':1,'count':2,price:22.0},
-       result1:{'id':1,'count':2,price:23.0},
-      checked:'',
+      serverurl:serverurl,
+      checked:false,
       shopdel:true,
+      SingleCheck:true,
       List:[],
+      shoplist:'',
     };
   },
   methods:{
     showDel(){
       this.shopdel= ! this.shopdel;
+      this.checked=false
     },
     SelectedHandle(){
       
     },
     onSubmit(){
+      this.SingleCheck=this.checked;
+     //this.$refs.checkboxes.toggle();
+     //this.$refs.checkboxes1.toggle();
+    },
+    DelShopHandle(){
 
     },
-    DelShopHandle(id){
-
+    getShopCartList(){
+      getShopCart()
+      .then(res=>{
+        this.shoplist=res.data;
+      })
+      .catch(err=>{
+        console.log(err)
+      })
     }
   },
   computed:{
     totalPrice() {
       var total=0;
         this.List.forEach(item=>{
-          total+=(item.price*100);
-          console.log(total)
+          total+=(item.product.price*100);
+         // console.log(this.List)
         })
       return total;
     },
@@ -126,7 +118,7 @@ export default {
       if(this.List.length){
         var count=0;
         this.List.forEach(item=>{
-          count+=item.count;
+          count+=item.quantity;
         })
         return '结算' + (count ? `(${count})` : '');
       }else{
@@ -134,7 +126,16 @@ export default {
       }
       
     },
-  }
+  },
+  created(){
+    this.getShopCartList();
+  },
+  components: {
+    [Card.name]: Card,
+    [Checkbox.name]: Checkbox,
+    [SubmitBar.name]: SubmitBar,
+    [CheckboxGroup.name]: CheckboxGroup
+  },
 };
 </script>
 
@@ -194,7 +195,6 @@ section {
    margin: 0.42rem 0 0 0.13rem;
   float: left;
   display: flex;
-  
 }
  .h  .van-icon-success{
    display: flex !important;
@@ -256,7 +256,7 @@ section {
   font-size:0.14rem;
   float: left;
   margin-top: 0.13rem;
-  margin-right:0.16rem;
+  margin-left:0.15rem;
   color: #979797;
 }
 .shop-editor p b:nth-of-type(1),.shop-editor p b:nth-of-type(3){
@@ -276,11 +276,11 @@ section {
   color:#666;
   margin-left:1rem;
 }
-.Total .van-button--danger {
+/* .Total .van-button--danger {
     color: #fff;
     background-color: #ccc;
     border: 1px solid #ccc;
-}
+} */
 .TotalEditor{
   display:none;
 }
