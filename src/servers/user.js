@@ -47,15 +47,6 @@ export function addToShopCrt(product,quantity){
 /**
  * 获取购物车信息
  */
-/* export function getShopCart(){
-  if(localStorage.getItem('my-carts')){
-    return JSON.parse(localStorage.getItem('my-carts'))
-  }else{
-    return []
-  }
- 
-} */
-
 export function getShopCart(){
   return axios({
     method:'get',
@@ -66,17 +57,19 @@ export function getShopCart(){
   })
 }
 
+export function DelShopCartList(id){
+  return axios({
+    method:'delete',
+    url:`/api/v1/shop_carts/${id}`,
+    headers:{
+      'Authorization':'Bearer'+' '+'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yzk4N2RmMjNlY2Y3ODA5YzdmNTUyOWUiLCJpYXQiOjE1NTM2OTAzMjcsImV4cCI6MTU1MzcyNjMyN30.gwHLcDSpQ2xM52QXTh5O0ube10DVv2F6KjuoWRLu2ZA'
+    }
+  })
+}
 
 
-/**
- * 获取购物车总数量
- */
-/* export function getShopCartCount(){
-  const myCart =getShopCart();
-  let result=0;
-  myCart.forEach(item=>result+=item.quantity);
-  return result;
-} */
+
+
 
 /**
  * 获取用户信息

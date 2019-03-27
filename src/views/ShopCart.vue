@@ -28,13 +28,14 @@
                 :title="p.product.name"
                 :thumb="serverurl+p.product.coverImg"
                 :origin-price="200"
+                :thumb-link="`#/list/${p.product._id}`"
 
               />
             </div>
             <!-- 编辑时显示 -->
             <div class="shop-editor " :class="{'hidden':shopdel}">
               <p><b>-</b><b>{{p.quantity}}</b><b>+</b></p>
-              <van-button type="danger"  :class="{'shop-del':true}" @click="DelShopHandle(id)">删除</van-button>
+              <van-button type="danger"  :class="{'shop-del':true}" @click="DelShopHandle(p._id)">删除</van-button>
             </div>
           </div>
         </div>
@@ -65,7 +66,7 @@
 
 <script>
 import { Checkbox, CheckboxGroup, Card, SubmitBar, Toast } from 'vant';
-import {getShopCart} from '../servers/user.js'
+import {getShopCart,DelShopCartList} from '../servers/user.js'
 import {serverurl} from '../utils/config'
 
 export default {
@@ -84,16 +85,20 @@ export default {
       this.shopdel= ! this.shopdel;
       this.checked=false
     },
-    SelectedHandle(){
-      
-    },
     onSubmit(){
       this.SingleCheck=this.checked;
      //this.$refs.checkboxes.toggle();
      //this.$refs.checkboxes1.toggle();
     },
-    DelShopHandle(){
-
+    DelShopHandle(id){
+      DelShopCartList(id)
+      .then(res=>{
+        console.log(res)
+        this.getShopCartList();
+      })
+      .catch(err=>{
+        console.log(err);
+      })
     },
     getShopCartList(){
       getShopCart()
