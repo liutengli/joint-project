@@ -31,7 +31,7 @@
           </p>
           <p>个人资料</p>
         </div>
-        <div>
+        <div @click="addressHandle">
           <p>
             <van-icon name="location-o" size="0.2rem"/>
           </p>
@@ -177,6 +177,11 @@ export default {
     ToSet() {
       this.$router.push({
         name: "Setting"
+      });
+    },
+    addressHandle(){
+       this.$router.push({
+        name: "Address"
       });
     }
   }
