@@ -23,24 +23,13 @@
   </div>
 </template>
 <script>
+import { addressList } from "../service/user";
 export default {
   data() {
     return {
-      chosenAddressId: "1",
-      list: [
-        {
-          id: "1",
-          name: "张三",
-          tel: "13000000000",
-          address: "浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室"
-        },
-        {
-          id: "2",
-          name: "李四",
-          tel: "1310000000",
-          address: "浙江省杭州市拱墅区莫干山路 50 号"
-        }
-      ],
+      addressList: "",
+      chosenAddressId: "",
+      list: [],
       disabledList: [
         {
           id: "3",
@@ -51,10 +40,41 @@ export default {
       ]
     };
   },
-
+  created() {
+    addressList()
+      .then(res => {
+        this.addressList = res.data.addresses;
+        this.addressList.forEach(item => {
+          let addr = {
+            id: "",
+            name: "",
+            tel: "",
+            address: ""
+          };
+          addr.id = item._id;
+          addr.name = item.receiver;
+          addr.tel = item.mobile;
+          addr.address = item.regions + " " + item.address;
+          if (item.isDefault) {
+            this.chosenAddressId = item._id;
+          } else {
+            this.chosenAddressId = "5c9c8a299c9ebd0561cc4ace";
+          }
+          this.list.push(addr);
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },
   methods: {
     onEdit(item, index) {
-      Toast("编辑地址:" + index);
+      //console.log(this.list[index].id);
+      this.$router.push({
+        name: "EditAddress",
+        params: {id:this.list[index].id}
+      });
+      //Toast("编辑地址:" + index);
     },
     backHandle() {
       this.$router.back();

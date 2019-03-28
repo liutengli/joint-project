@@ -16,7 +16,6 @@ export function login(userName,pwd){
  * nickName  昵称
  * avatar  头像
  * }
- * 
  */
 export function reg(user){
   return axios.post('/api/v1/auth/reg',user)
@@ -68,9 +67,6 @@ export function DelShopCartList(id){
 }
 
 
-
-
-
 /**
  * 获取用户信息
  */
@@ -83,5 +79,43 @@ export function DelShopCartList(id){
      headers:{
        'Authorization':'Bearer'+' '+sessionStorage.getItem('token')
      }
-   }) 
+   })
  }
+
+
+
+//获取收货地址
+export function addressList(){
+   return axios({
+    method:'get',
+    url:'/api/v1/addresses',
+    headers:{
+      'Authorization':'Bearer'+' '+sessionStorage.getItem('token')
+    }
+  })
+}
+
+//添加收货地址
+export function addAddress(address){
+   return axios({
+    method:'post',
+    url:'/api/v1/addresses',
+    data:  address ,
+    headers:{
+      'Authorization':'Bearer'+' '+sessionStorage.getItem('token')
+    }
+  })
+}
+
+//修改收货地址
+export function editAddress(id,address){
+  console.log(id)
+  return axios({
+   method:'post',
+   url:`/api/v1/addresses/:${id}`,
+   data:  address ,
+   headers:{
+     'Authorization':'Bearer'+' '+sessionStorage.getItem('token')
+   }
+ })
+}

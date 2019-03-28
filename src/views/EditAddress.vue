@@ -4,7 +4,7 @@
       <span @click="backHandle">
         <van-icon name="arrow-left"/>
       </span>
-      <h3>添加收货地址</h3>
+      <h3>修改收货地址</h3>
     </header>
     <section>
       <article>
@@ -24,7 +24,7 @@
 </template>
 <script>
 import areaList from "../utils/area";
-import { addAddress } from "../service/user";
+import { editAddress } from "../service/user";
 export default {
   data() {
     return {
@@ -41,7 +41,8 @@ export default {
       //console.log(content.isDefault);
       const regions =
         content.province + "-" + content.city + "-" + content.county;
-      addAddress({
+      //console.log(this.$route.params)
+      editAddress(this.$route.params.id, {
         receiver: content.name, //姓名
         mobile: content.tel, //手机
         regions: regions, //地区信息
@@ -51,7 +52,7 @@ export default {
         .then(res => {
           //console.log(res);
           if (res.data.code == "success") {
-            this.$toast("添加成功");
+            this.$toast("保存成功");
             this.$router.push({
               name: "Address"
             });

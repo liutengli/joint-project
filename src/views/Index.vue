@@ -11,8 +11,8 @@
       <article>
         <van-swipe :autoplay="3000" indicator-color="white">
           <van-swipe-item v-for="(img,i) in imgs" :key="i">
-            <a href="javascript:void(0);" @click="jumpHandle">
-              <img class="swipe-img" :src="img" alt>
+            <a href="javascript:void(0);" @click="jumpHandle()">
+              <img class="swipe-img" :src="img">
             </a>
           </van-swipe-item>
         </van-swipe>
@@ -198,7 +198,7 @@ export default {
       });
     },
     jumpHandle() {
-      console.log("aaa")
+      //console.log("aaa")
       this.$router.push({
         name: "Detail"
       });

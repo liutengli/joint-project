@@ -50,7 +50,7 @@ export default {
           password: this.password
         })
           .then(res => {
-            console.log(res);
+            //console.log(res);
             if (res.data.code == "success") {
               this.$toast("注册成功");
               this.$router.push({

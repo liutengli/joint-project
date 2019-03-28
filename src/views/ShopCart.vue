@@ -79,7 +79,7 @@
 
 <script>
 import { Checkbox, CheckboxGroup, Card, SubmitBar, Toast } from "vant";
-import { getShopCart, DelShopCartList } from "../servers/user.js";
+import { getShopCart, DelShopCartList } from "../service/user.js";
 import { serverurl } from "../utils/config";
 
 export default {
@@ -185,7 +185,6 @@ export default {
 <style scoped>
 .app {
   color: #666;
- 
 }
 .cart-title {
   width: 100%;
@@ -237,12 +236,6 @@ section {
   float: left;
   z-index: 22;
 }
-/* .h .van-icon-success {
-  display: flex !important;
-}
-.h >>> i.van-icon {
-  float: left !important;
-} */
 .shop-desc {
   height: 0.98rem;
   margin-top: 0.18rem;

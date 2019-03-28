@@ -12,6 +12,7 @@ import Reg from './views/Reg.vue'
 import Setting from './views/Setting.vue'
 import Address from './views/Address.vue'
 import AddAddress from './views/AddAddress.vue'
+import EditAddress from './views/EditAddress.vue'
 
 //使用vue-router
 Vue.use(Router)
@@ -38,6 +39,10 @@ const router = new Router({
       path: '/add-address',
       name: 'AddAddress',
       component: AddAddress
+    },{
+      path: '/edit-address/:id',
+      name: 'EditAddress',
+      component: EditAddress
     },{
       path: '/shopcart',
       name: 'ShopCart',

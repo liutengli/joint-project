@@ -140,7 +140,7 @@ import {
   GoodsActionBigBtn,
   GoodsActionMiniBtn
 } from "vant";
-
+import { getProductDetail } from '../service/products'
 export default {
   components: {
     [Tag.name]: Tag,
@@ -152,7 +152,7 @@ export default {
     [SwipeItem.name]: SwipeItem,
     [GoodsAction.name]: GoodsAction,
     [GoodsActionBigBtn.name]: GoodsActionBigBtn,
-    [GoodsActionMiniBtn.name]: GoodsActionMiniBtn
+    [GoodsActionMiniBtn.name]: GoodsActionMiniBtn,
   },
   data() {
     return {
@@ -168,8 +168,24 @@ export default {
           "https://image7.wbiao.co/shop/65055a890c7d467597c8832091629eec.jpg?x-oss-process=image/resize,m_pad,w_750,h_750,color_ffffff",
           "https://image7.wbiao.co/shop/2cb46b43984146a4865f10af2670a52b.jpg?x-oss-process=image/resize,m_pad,w_750,h_750,color_ffffff"
         ]
-      }
+      },
+      //id: "",
+      product: ""
     };
+  },
+  create(){
+    //this.id = this.$route.params.id;
+    //get(serverUrl+"/goodsbyid.do", { params: { id: this.id }})
+     console.log("bbb")
+    getProductDetail(1)
+      .then(res => {
+        console.log("aaa")
+        console.log(res);
+        this.product=res.data
+      })
+      .catch(err => {
+        console.log(err);
+      });
   },
   methods: {
     formatPrice() {
