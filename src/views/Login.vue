@@ -19,7 +19,9 @@
 </template>
 <script>
 import { loginIn } from "../utils/auth.js";
-import {login } from "../servers/user.js";
+import {login,getShopCart } from "../servers/user.js";
+import { mapState ,mapMutations} from "vuex";
+
 export default {
   data() {
     return {
@@ -28,11 +30,27 @@ export default {
     };
   },
   methods: {
+     ...mapMutations(['Initcounter']), // 把vuex中的mutations映射到
+    cartList(){
+      var count=0;
+      getShopCart()
+      .then(res=>{
+        console.log(res)
+        res.data.forEach(p=>{
+          count+=p.quantity;
+        })
+        this.Initcounter(count)
+      }).catch(err=>{
+        console.log(err)
+      })
+    },
     loginHandle() {
       login(this.userName,this.password)
         .then(res => {
           if (res.data.code == "success") {
             loginIn(this.userName, res.data.token);
+            //获取购物车总数
+             this.cartList();
             this.$eventBus.$emit("navToZX", "UC");
             this.$router.push({
               name: "UC"
