@@ -5,6 +5,7 @@ import Index from './views/Index.vue'
 import Search from './views/Search.vue'
 import Detail from './views/Detail.vue'
 import List from './views/List.vue'
+import ProductsList from './views/ProductsList.vue'
 import ShopCart from './views/ShopCart.vue'
 import UserCenter from './views/UserCenter.vue'
 import Login from './views/Login.vue'
@@ -12,6 +13,7 @@ import Reg from './views/Reg.vue'
 import Setting from './views/Setting.vue'
 import Address from './views/Address.vue'
 import AddAddress from './views/AddAddress.vue'
+
 
 //使用vue-router
 Vue.use(Router)
@@ -49,6 +51,11 @@ const router = new Router({
       path: '/list',
       name: 'List',
       component: List,
+    },
+    {
+      path: '/productslist',
+      name: 'ProductsList',
+      component: ProductsList,
     },
     {
       path:'/login',
