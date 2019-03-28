@@ -171,7 +171,7 @@ export default {
       return "¥" + this.goods.price;
     },
     onClickCart() {
-      this.$router.push("ShopCart");
+      this.$router.push({name:'ShopCart'});
     },
     sorry() {
       Toast("暂无后续逻辑~");
@@ -185,7 +185,7 @@ export default {
         this.add(1)
         addToShopCrt(this.id,1)
         .then(res=>{
-          console.log(res);
+          //console.log(res);
         })
         .catch(err=>{
           console.log(err);

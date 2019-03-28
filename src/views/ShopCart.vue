@@ -108,7 +108,7 @@ export default {
       }else{
         this.List=[]
       }
-      console.log(this.checked)
+      //console.log(this.checked)
     },
     DelShopHandle(id) {
       DelShopCartList(id)
@@ -159,7 +159,7 @@ export default {
       var total = 0;
       this.List.forEach(item => {
         total += (item.product.price* item.quantity) ;
-         console.log(this.List)
+         //console.log(this.List)
       });
       return total;
     },
