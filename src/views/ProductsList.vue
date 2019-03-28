@@ -28,23 +28,26 @@
       <van-tabs v-model="active" class="nav_content">
         <van-tab title="综合排序">
           <div class="commodity">
-            <a href="#" class="item01" v-for="item in products" :key="item._id">
-              <p class="p1">
-                <img :src="serverUrl+item.coverImg" alt>
-              </p>
-              <p class="p2 esp1">
-                <em class="em_brand">{{item.name}}</em>
-                {{item.descriptions}}
-              </p>
-              <p class="p3">
-                ￥{{item.price}}
-                <del>￥9,300</del>
-              </p>
-              <p class="p4">
-                <span>自营</span>
-                <span>水蓝版</span>
-              </p>
-            </a>
+            <!-- <lazy-component> -->
+              <a href="#" class="item01" v-for="item in products" :key="item._id">
+                <p class="p1">
+                  <img :src="serverUrl+item.coverImg" alt>
+                </p>
+                <p class="p2 esp1">
+                  <em class="em_brand">{{item.name}}</em>
+                  {{item.descriptions}}
+                </p>
+                <p class="p3">
+                  ￥{{item.price}}
+                  <del>￥9,300</del>
+                </p>
+                <p class="p4">
+                  <span>自营</span>
+                  <span>水蓝版</span>
+                </p>
+              </a>
+            <!-- </lazy-component> -->
+
 
             <!-- <a href="#" class="item01">
               <p class="p1">
@@ -175,7 +178,7 @@
   </div>
 </template>
 <script>
-import { getProducts } from "../services/products";
+import { getProducts } from "../servers/products";
 import { serverUrl } from "../utils/config";
 
 export default {
