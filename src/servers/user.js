@@ -1,5 +1,6 @@
 import axios from '../utils/request'
 
+
 export function login(userName,pwd){
   return axios.post('/api/v1/auth/login',{
     userName:userName,
