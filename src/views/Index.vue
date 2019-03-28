@@ -300,7 +300,6 @@ section article:nth-child(5) a {
   display: block;
   float: left;
 }
-
 section .slide {
   width: 220%;
   display: flex;
