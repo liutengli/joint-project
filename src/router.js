@@ -41,7 +41,10 @@ const router = new Router({
     },{
       path: '/shopcart',
       name: 'ShopCart',
-      component: ShopCart
+      component: ShopCart,
+      meta:{//元标签
+        needLogin:true,//需要登录
+      }
     },{
       path: '/list',
       name: 'List',

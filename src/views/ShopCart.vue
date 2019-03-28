@@ -81,6 +81,7 @@
 import { Checkbox, CheckboxGroup, Card, SubmitBar, Toast } from "vant";
 import { getShopCart, DelShopCartList } from "../servers/user.js";
 import { serverurl } from "../utils/config";
+import { mapState, mapMutations, mapActions } from 'vuex';
 
 export default {
   data() {
@@ -127,6 +128,7 @@ export default {
       getShopCart()
         .then(res => {
           this.shoplist = res.data;
+          //counter=22
         })
         .catch(err => {
           console.log(err);
@@ -150,6 +152,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(['counter']), // 使用...
     totalPrice() {
       var total = 0;
       this.List.forEach(item => {
@@ -178,7 +181,7 @@ export default {
     [Checkbox.name]: Checkbox,
     [SubmitBar.name]: SubmitBar,
     [CheckboxGroup.name]: CheckboxGroup
-  }
+  },
 };
 </script>
 

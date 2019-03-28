@@ -21,7 +21,7 @@ export function login(userName,pwd){
  * password  密码
  *
  * }
- * 
+ *
  */
 export function reg(user){
   return axios.post('/api/v1/auth/reg',user)
@@ -33,20 +33,7 @@ export function reg(user){
  * @param {*} quantity 商品数量，默认写1
  */
 export function addToShopCrt(product,quantity){
-  let myCarts=getShopCart()
-  //console.log(myCarts)
-  //查询当前商品在购物车数组中的索引
-  const index=myCarts.findIndex(cart=>cart.product==product);
- // console.log(index)
-  if(index>-1){
-    myCarts[index].quantity+=quantity;
-  }else{
-    myCarts.push({
-      product,
-      quantity
-    })
-  }
-  localStorage.setItem('my-carts',JSON.stringify(myCarts));//保存购物车信息
+  
 }
 
 /**
@@ -61,7 +48,10 @@ export function getShopCart(){
     }
   })
 }
-
+/**
+ *删除购物车信息
+ * @param {*} id   购物车列表id
+ */
 export function DelShopCartList(id){
   return axios({
     method:'delete',

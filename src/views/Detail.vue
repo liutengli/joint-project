@@ -120,13 +120,14 @@
     <van-goods-action>
       <van-goods-action-mini-btn icon="chat-o" @click="sorry">客服</van-goods-action-mini-btn>
       <van-goods-action-mini-btn icon="cart-o" @click="onClickCart">购物车</van-goods-action-mini-btn>
-      <van-goods-action-big-btn @click="sorry">加入购物车</van-goods-action-big-btn>
+      <van-goods-action-big-btn @click="AddShopCart">加入购物车</van-goods-action-big-btn>
       <van-goods-action-big-btn primary @click="sorry">立即购买</van-goods-action-big-btn>
     </van-goods-action>
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations, mapActions } from 'vuex';
 import {
   Tag,
   Col,
@@ -172,6 +173,7 @@ export default {
     };
   },
   methods: {
+      ...mapMutations(['add']), // 把vuex中的mutations映射到methods
     formatPrice() {
       return "¥" + this.goods.price;
     },
@@ -183,6 +185,15 @@ export default {
     },
     backHandle() {
       this.$router.back();
+    },
+    AddShopCart(){
+      this.add(1)
+    },
+  },
+  computed: {
+    ...mapState(['counter']), // 使用...
+    cc() {
+      return this.c + '....'
     }
   }
 };

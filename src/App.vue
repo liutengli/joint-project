@@ -5,7 +5,7 @@
       <van-tabbar v-model="active" @change="changeHande">
         <van-tabbar-item icon="wap-home">首页</van-tabbar-item>
         <van-tabbar-item icon="comment-o">选表</van-tabbar-item>
-        <van-tabbar-item icon="shopping-cart-o" :to="{name:'ShopCart'}">购物车</van-tabbar-item>
+        <van-tabbar-item icon="shopping-cart-o" :to="{name:'ShopCart'}" :info='counter'>购物车</van-tabbar-item>
         <van-tabbar-item icon="manager-o">我的</van-tabbar-item>
       </van-tabbar>
     </div>
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-
+import { mapState } from "vuex";
 export default {
   created() {
     this.$eventBus.$on("navToZX", link => {
@@ -57,7 +57,10 @@ export default {
           });
           break;
       }
-    }
+    },
+  },
+  computed: {
+    ...mapState(['counter']), // 使用...
   }
 };
 </script>
