@@ -62,8 +62,8 @@ main {
   margin: 0 auto;
   position: fixed;
   bottom: 0rem;
-  height: 50px;
-  line-height: 50px;
+  height: 65px;
+  line-height: 65px;
   background: #bbb;
 }
 .W-bottom-btn a {

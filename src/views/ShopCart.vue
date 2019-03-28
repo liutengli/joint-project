@@ -42,7 +42,7 @@
                   :title="p.product.name"
                   :thumb="serverurl+p.product.coverImg"
                   :origin-price="200"
-                  :thumb-link="`#/list/${p.product._id}`"
+                  :thumb-link="`#/detail/${p.product._id}`"
                 />
               </div>
               <!-- 编辑时显示 -->
