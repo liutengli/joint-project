@@ -52,7 +52,7 @@ export function getShopCart(){
     method:'get',
     url:'/api/v1/shop_carts',
     headers:{
-      'Authorization':'Bearer'+' '+'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yzk4N2RmMjNlY2Y3ODA5YzdmNTUyOWUiLCJpYXQiOjE1NTM2OTAzMjcsImV4cCI6MTU1MzcyNjMyN30.gwHLcDSpQ2xM52QXTh5O0ube10DVv2F6KjuoWRLu2ZA'
+      'Authorization':'Bearer'+' '+'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yzk4N2RmMjNlY2Y3ODA5YzdmNTUyOWUiLCJpYXQiOjE1NTM3MzIzODEsImV4cCI6MTU1Mzc2ODM4MX0.wAzSCfYFVplbF_TjCvkfQfX1Bj45V4Oyp6sTxVwqSq8'
     }
   })
 }
@@ -62,7 +62,7 @@ export function DelShopCartList(id){
     method:'delete',
     url:`/api/v1/shop_carts/${id}`,
     headers:{
-      'Authorization':'Bearer'+' '+'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yzk4N2RmMjNlY2Y3ODA5YzdmNTUyOWUiLCJpYXQiOjE1NTM2OTAzMjcsImV4cCI6MTU1MzcyNjMyN30.gwHLcDSpQ2xM52QXTh5O0ube10DVv2F6KjuoWRLu2ZA'
+      'Authorization':'Bearer'+' '+'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yzk4N2RmMjNlY2Y3ODA5YzdmNTUyOWUiLCJpYXQiOjE1NTM3MzIzODEsImV4cCI6MTU1Mzc2ODM4MX0.wAzSCfYFVplbF_TjCvkfQfX1Bj45V4Oyp6sTxVwqSq8'
     }
   })
 }
