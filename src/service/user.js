@@ -1,5 +1,10 @@
 import axios from '../utils/request'
 
+/**
+ *用户登录
+ * @param {*} userName
+ * @param {*} pwd
+ */
 export function login(userName,pwd){
   return axios.post('/api/v1/auth/login',{
     userName:userName,
@@ -51,7 +56,7 @@ export function getShopCart(){
     method:'get',
     url:'/api/v1/shop_carts',
     headers:{
-      'Authorization':'Bearer'+' '+'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yzk4N2RmMjNlY2Y3ODA5YzdmNTUyOWUiLCJpYXQiOjE1NTM3MzIzODEsImV4cCI6MTU1Mzc2ODM4MX0.wAzSCfYFVplbF_TjCvkfQfX1Bj45V4Oyp6sTxVwqSq8'
+      'Authorization':'Bearer'+' '+sessionStorage.getItem('token')
     }
   })
 }
@@ -61,7 +66,7 @@ export function DelShopCartList(id){
     method:'delete',
     url:`/api/v1/shop_carts/${id}`,
     headers:{
-      'Authorization':'Bearer'+' '+'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yzk4N2RmMjNlY2Y3ODA5YzdmNTUyOWUiLCJpYXQiOjE1NTM3MzIzODEsImV4cCI6MTU1Mzc2ODM4MX0.wAzSCfYFVplbF_TjCvkfQfX1Bj45V4Oyp6sTxVwqSq8'
+      'Authorization':'Bearer'+' '+sessionStorage.getItem('token')
     }
   })
 }

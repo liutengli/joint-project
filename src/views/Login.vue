@@ -19,7 +19,7 @@
 </template>
 <script>
 import { loginIn } from "../utils/auth.js";
-import { post } from "axios";
+import {login } from "../servers/user.js";
 export default {
   data() {
     return {
@@ -29,10 +29,7 @@ export default {
   },
   methods: {
     loginHandle() {
-      post("http://api.cat-shop.penkuoer.com/api/v1/auth/login", {
-        userName: this.userName,
-        password: this.password
-      })
+      login(this.userName,this.password)
         .then(res => {
           if (res.data.code == "success") {
             loginIn(this.userName, res.data.token);

@@ -256,7 +256,7 @@ section {
   font-weight: normal;
 }
 .van-submit-bar {
-  bottom: 0.65rem;
+  bottom: 65px;
   padding-left: 0.13rem;
   background: #fff;
   width: 97%;
