@@ -28,16 +28,16 @@
       <van-tabs v-model="active" class="nav_content">
         <van-tab title="综合排序">
           <div class="commodity">
-            <a href="#" class="item01">
+            <a href="#" class="item01" v-for="item in products" :key="item._id">
               <p class="p1">
-                <img src="../assets/imgs/1.jpg" alt>
+                <img :src="serverUrl+item.coverImg" alt>
               </p>
               <p class="p2 esp1">
-                <em class="em_brand">爱宝时</em>
-                Emotion情感系列 机械男表
+                <em class="em_brand">{{item.name}}</em>
+                {{item.descriptions}}
               </p>
               <p class="p3">
-                ￥5,770
+                ￥{{item.price}}
                 <del>￥9,300</del>
               </p>
               <p class="p4">
@@ -45,24 +45,8 @@
                 <span>水蓝版</span>
               </p>
             </a>
-            <a href="#" class="item01">
-              <p class="p1">
-                <img src="../assets/imgs/1.jpg" alt>
-              </p>
-              <p class="p2 esp1">
-                <em class="em_brand">爱宝时</em>
-                Emotion情感系列 机械男表
-              </p>
-              <p class="p3">
-                ￥5,770
-                <del>￥9,300</del>
-              </p>
-              <p class="p4">
-                <span>自营</span>
-                <span>水蓝版</span>
-              </p>
-            </a>
-            <a href="#" class="item01">
+
+            <!-- <a href="#" class="item01">
               <p class="p1">
                 <img src="../assets/imgs/1.jpg" alt>
               </p>
@@ -83,7 +67,7 @@
               <a href="#">
                 <img src="../assets/imgs/1.jpg" alt>
               </a>
-            </div>
+            </div>-->
           </div>
         </van-tab>
         <van-tab title="销量领先">销量领先</van-tab>
@@ -192,13 +176,17 @@
 </template>
 <script>
 import { getProducts } from "../services/products";
+import { serverUrl } from "../utils/config";
 
 export default {
   data() {
     return {
       active: 2,
       show: false,
-      page: 1
+      page: 1,
+      products: [],
+      pageCount: 1, //总页数
+      serverUrl
     };
   },
   created() {
@@ -212,6 +200,9 @@ export default {
       getProducts({ page: this.page })
         .then(res => {
           console.log(res);
+          this.products = res.data.products;
+          // this.pageCount = this.data.pages;
+          console.log(this.products);
         })
         .catch(err => {
           console.log(err);
@@ -548,8 +539,9 @@ img {
   height: 220px;
 }
 .commodity .item01 .p1 img {
-  width: auto;
+  /* width: auto; */
   height: 100%;
+  width: 100%;
 }
 .esp1 {
   text-overflow: ellipsis;
