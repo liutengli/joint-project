@@ -33,7 +33,17 @@ export function reg(user){
  * @param {*} quantity 商品数量，默认写1
  */
 export function addToShopCrt(product,quantity){
-  
+  return axios({
+    method:'post',
+    url:'/api/v1/shop_carts',
+    headers:{
+      'Authorization':'Bearer'+' '+sessionStorage.getItem('token')
+    },
+    data:{
+      product:product,
+      quantity:quantity,
+    }
+  })
 }
 
 /**

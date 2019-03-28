@@ -96,6 +96,7 @@ export default {
     };
   },
   methods: {
+     ...mapMutations(['Initcounter']), // 把vuex中的mutations映射到methods
     showDel() {
       this.shopdel = !this.shopdel;
       this.checked = false;
@@ -129,6 +130,7 @@ export default {
         .then(res => {
           this.shoplist = res.data;
           //counter=22
+          this.Initcounter(this.ShopCartAllcount)
         })
         .catch(err => {
           console.log(err);
@@ -149,7 +151,7 @@ export default {
       }else{
         this.disabled=true
       }
-    }
+    },
   },
   computed: {
     ...mapState(['counter']), // 使用...
@@ -171,6 +173,13 @@ export default {
       } else {
         return "结算";
       }
+    },
+    ShopCartAllcount(){
+      var count=0;
+      this.shoplist.forEach(q=>{
+        count+=q.quantity
+      })
+      return count;
     }
   },
   created() {

@@ -16,12 +16,18 @@ Vue.use(Vant)
 const store=new Vuex.Store({
   //全局状态树
   state:{
-    counter:4,
+    counter:0,
   },
   mutations:{
     add(state,step){
       state.counter+=step
+    },
+    Initcounter(state,step){
+      state.counter=step
     }
+    /* Initcounter(count){
+      state
+    } */
   }
 })
 

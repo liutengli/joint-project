@@ -141,6 +141,8 @@ import {
   GoodsActionBigBtn,
   GoodsActionMiniBtn
 } from "vant";
+//导入添加购物车
+import {addToShopCrt} from '../servers/user.js'
 
 export default {
   components: {
@@ -187,15 +189,27 @@ export default {
       this.$router.back();
     },
     AddShopCart(){
-      this.add(1)
+      if (sessionStorage.getItem('token')) {
+        //购物车数量加1
+        this.add(1)
+        addToShopCrt('5c98b9ef0a5efe23630748fc',1)
+        .then(res=>{
+          console.log(res);
+        })
+        .catch(err=>{
+          console.log(err);
+        })
+      }else{
+        //跳转到登录页面
+        this.$router.push({
+          name:'Login'
+        })
+      }
+      
+
     },
   },
-  computed: {
-    ...mapState(['counter']), // 使用...
-    cc() {
-      return this.c + '....'
-    }
-  }
+  
 };
 </script>
 

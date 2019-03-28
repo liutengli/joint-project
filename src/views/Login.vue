@@ -38,7 +38,7 @@ export default {
               name: "UC"
             });
           } else {
-            this.$toast("用户名或密码错误");
+            this.$toast(res.data.message);
             this.userName = "";
             this.password = "";
           }

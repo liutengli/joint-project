@@ -13,7 +13,9 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState ,mapMutations} from "vuex";
+import { getShopCart } from "./servers/user.js";
+
 export default {
   created() {
     this.$eventBus.$on("navToZX", link => {
@@ -27,6 +29,7 @@ export default {
         this.active = 2;
       }
     });
+    this.cartList();
   },
   data() {
     return {
@@ -34,6 +37,20 @@ export default {
     };
   },
   methods: {
+     ...mapMutations(['Initcounter']), // 把vuex中的mutations映射到
+    cartList(){
+      var count=0;
+      getShopCart()
+      .then(res=>{
+        //console.log(res)
+        res.data.forEach(p=>{
+          count+=p.quantity;
+        })
+        this.Initcounter(count)
+      }).catch(err=>{
+        console.log(err)
+      })
+    },
     changeHande() {
       switch (this.active) {
         case 0:
