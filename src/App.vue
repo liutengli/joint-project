@@ -72,5 +72,11 @@ export default {
   height: 65px;
   border-top: 0.01rem solid #eee;
 }
+body{
+  background-color: #f1f1f1
+}
+#app{
+  padding-bottom: 0.6rem;
+}
 
 </style>

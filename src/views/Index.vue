@@ -189,7 +189,7 @@ export default {
       imgs2,
       pinpaiImgs,
       gundongImgs
-    };
+    }
   },
   methods: {
     searchHandle() {
