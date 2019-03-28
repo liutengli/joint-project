@@ -122,7 +122,6 @@ export default {
      this.List.forEach(item=>{
        this.DelShopHandle(item._id)
      })
-     
     },
     getShopCartList() {
       getShopCart()

@@ -94,10 +94,8 @@ section {
 }
 footer {
   width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
   margin-bottom: 0.5rem;
+  flex-shrink: 0;
 }
 footer .add {
   display: block;

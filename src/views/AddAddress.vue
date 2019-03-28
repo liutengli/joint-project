@@ -23,6 +23,7 @@
   </div>
 </template>
 <script>
+import  areaList  from "../utils/area";
 export default {
   data() {
     return {
