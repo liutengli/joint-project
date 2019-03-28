@@ -1,6 +1,6 @@
 <template>
   <div class="setting">
-    <van-nav-bar title="设置" left-arrow @click-left="onClickLeft" border="true"/>
+    <van-nav-bar title="设置" left-arrow @click-left="onClickLeft"/>
     <main>
       <div class="W-member-setting">
         <a class="set-a to-set-psd">密码设置</a>
