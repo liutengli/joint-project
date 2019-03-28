@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" href="common.css">
   <title>万表网【官网】：甄选全球高品质腕表，买手表，上万表！</title>
   <script>
     window.onload = function () {
@@ -16,13 +17,13 @@
     window.onresize = function () {
       getRem(400, 100)
     };
+
     function getRem(pwidth, prem) {
       var html = document.getElementsByTagName("html")[0];
       var oWidth = document.body.clientWidth || document.documentElement.clientWidth;
       html.style.fontSize = oWidth / pwidth * prem + "px";
     }
   </script>
-
 </head>
 
 <body>
@@ -35,4 +36,3 @@
 </body>
 
 </html>
-

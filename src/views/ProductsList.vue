@@ -31,10 +31,10 @@
             <!-- <lazy-component> -->
               <a href="#" class="item01" v-for="item in products" :key="item._id">
                 <p class="p1">
-                  <img :src="serverUrl+item.coverImg" alt>
+                  <img :src="serverurl+item.coverImg" alt>
                 </p>
                 <p class="p2 esp1">
-                  <em class="em_brand">{{item.name}}</em>
+                  <em class="em_brand">{{item.coverImg}}{{item.name}}</em>
                   {{item.descriptions}}
                 </p>
                 <p class="p3">
@@ -179,17 +179,17 @@
 </template>
 <script>
 import { getProducts } from "../servers/products";
-import { serverUrl } from "../utils/config";
+import { serverurl } from "../utils/config";
 
 export default {
   data() {
     return {
-      active: 2,
+      active: 0,
       show: false,
       page: 1,
       products: [],
       pageCount: 1, //总页数
-      serverUrl
+      serverurl
     };
   },
   created() {

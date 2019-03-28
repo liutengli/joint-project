@@ -68,54 +68,15 @@
           </p>
           <div class="sort_list sort_list_01">
             <ul class="clearfix">
-              <li>
-                <a href="#">
+              <li v-for="index in 5" :key="index">
+                <a href="#/productslist">
                   <p class="p_img">
                     <img src="../assets/imgs/2.png" alt="">
                   </p>
                   <p class="p_txt">机械表</p>
                 </a>
               </li>
-              <li>
-                <a href="#">
-                  <p class="p_img">
-                    <img src="../assets/imgs/2.png" alt="">
-                  </p>
-                  <p class="p_txt">机械表</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <p class="p_img">
-                    <img src="../assets/imgs/2.png" alt="">
-                  </p>
-                  <p class="p_txt">机械表</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <p class="p_img">
-                    <img src="../assets/imgs/2.png" alt="">
-                  </p>
-                  <p class="p_txt">机械表</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <p class="p_img">
-                    <img src="../assets/imgs/2.png" alt="">
-                  </p>
-                  <p class="p_txt">机械表</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <p class="p_img">
-                    <img src="../assets/imgs/2.png" alt="">
-                  </p>
-                  <p class="p_txt">机械表</p>
-                </a>
-              </li>
+
             </ul>
           </div>
           <p class="hot_tit">
@@ -125,48 +86,8 @@
           </p>
           <div class="sort_list sort_list_01">
             <ul class="clearfix">
-              <li>
-                <a href="#">
-                  <p class="p_img">
-                    <img src="../assets/imgs/2.png" alt="">
-                  </p>
-                  <p class="p_txt">机械表</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <p class="p_img">
-                    <img src="../assets/imgs/2.png" alt="">
-                  </p>
-                  <p class="p_txt">机械表</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <p class="p_img">
-                    <img src="../assets/imgs/2.png" alt="">
-                  </p>
-                  <p class="p_txt">机械表</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <p class="p_img">
-                    <img src="../assets/imgs/2.png" alt="">
-                  </p>
-                  <p class="p_txt">机械表</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <p class="p_img">
-                    <img src="../assets/imgs/2.png" alt="">
-                  </p>
-                  <p class="p_txt">机械表</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
+              <li v-for="index in 5" :key="index">
+                <a href="#/productslist">
                   <p class="p_img">
                     <img src="../assets/imgs/2.png" alt="">
                   </p>
@@ -182,80 +103,8 @@
           </p>
           <div class="sort_list sort_list_01">
             <ul class="clearfix">
-              <li>
-                <a href="#">
-                  <p class="p_img">
-                    <img src="../assets/imgs/2.png" alt="">
-                  </p>
-                  <p class="p_txt">机械表</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <p class="p_img">
-                    <img src="../assets/imgs/2.png" alt="">
-                  </p>
-                  <p class="p_txt">机械表</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <p class="p_img">
-                    <img src="../assets/imgs/2.png" alt="">
-                  </p>
-                  <p class="p_txt">机械表</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <p class="p_img">
-                    <img src="../assets/imgs/2.png" alt="">
-                  </p>
-                  <p class="p_txt">机械表</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <p class="p_img">
-                    <img src="../assets/imgs/2.png" alt="">
-                  </p>
-                  <p class="p_txt">机械表</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <p class="p_img">
-                    <img src="../assets/imgs/2.png" alt="">
-                  </p>
-                  <p class="p_txt">机械表</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <p class="p_img">
-                    <img src="../assets/imgs/2.png" alt="">
-                  </p>
-                  <p class="p_txt">机械表</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <p class="p_img">
-                    <img src="../assets/imgs/2.png" alt="">
-                  </p>
-                  <p class="p_txt">机械表</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <p class="p_img">
-                    <img src="../assets/imgs/2.png" alt="">
-                  </p>
-                  <p class="p_txt">机械表</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
+              <li v-for="index in 8" :key="index">
+                <a href="#/productslist">
                   <p class="p_img">
                     <img src="../assets/imgs/2.png" alt="">
                   </p>
@@ -469,6 +318,12 @@ export default {
     background-color: #ededed;
     margin-bottom: 3.7px;
   }
+  .sort_list_01, .sort_list {
+    overflow: hidden;
+  }
+  /* .sort_list_01 ul {
+    overflow: hidden;
+  } */
   .sort_list_01 ul li {
     display: block;
     float: left;

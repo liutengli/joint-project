@@ -1,24 +1,16 @@
-/**
- * 登录 把token存在sessionStorage中
- */
-export function loginIn(token) {
-  localStorage.setItem('token', token)
+export function loginIn(user,token){
+    sessionStorage.setItem('userName',user);
+    sessionStorage.setItem('token',token);
 }
 
-/**
- * 通过存储的内容判断用户是否登录
- */
-export function isLogined() {
-  if(localStorage.getItem('token')) {
-    return true
-  } else {
-    return false
+export function isLogin() {
+    if(sessionStorage.getItem('userName')){
+        return true
+    }else{
+        return false
+    }
   }
-}
-
-/**
- * 清除本地存储
- */
-export function logOut() {
-  localStorage.removeItem('token')
+export function loginOut(){
+    sessionStorage.removeItem('userName');
+    sessionStorage.removeItem('token');
 }
