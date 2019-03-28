@@ -21,15 +21,15 @@
       <span class="header-right">...</span>
     </header>
     <van-swipe class="goods-swipe" :autoplay="3000">
-      <van-swipe-item v-for="thumb in goods.thumb" :key="thumb">
-        <img :src="thumb">
+      <van-swipe-item  :key="goods._id">
+        <img :src="serverurl+goods.coverImg">
       </van-swipe-item>
     </van-swipe>
 
     <van-cell-group>
       <van-cell>
         <div class="goods-price">{{ formatPrice(goods.price) }}</div>
-        <div class="goods-title">{{ goods.title }}</div>
+        <div class="goods-title">{{ goods.name }}  {{goods.descriptions}}</div>
       </van-cell>
       <van-cell class="goods-express">
         <van-col span="10">顺丰包邮</van-col>
@@ -143,7 +143,8 @@ import {
 } from "vant";
 //导入添加购物车
 import {addToShopCrt} from '../servers/user.js'
-
+import {getProductDetail} from '../servers/products.js'
+import {serverurl} from '../utils/config.js'
 export default {
   components: {
     [Tag.name]: Tag,
@@ -159,19 +160,9 @@ export default {
   },
   data() {
     return {
-      goods: {
-        title: "阿玛尼ARMANI-时尚女表系列 AR11055 石英女表",
-        price: 2332,
-        remain: 19,
-        thumb: [
-          "https://image7.wbiao.co/shop/43fdbb57313a4162880e81931d0c1abd.png?x-oss-process=image/resize,m_pad,w_750,h_750,color_ffffff",
-          "https://image7.wbiao.co/shop/2da9cbe4bd794d33b9c865fe57a3a701.jpg?x-oss-process=image/resize,m_pad,w_750,h_750,color_ffffff",
-          "https://image7.wbiao.co/shop/60ee7b5813f4494cb02bff3f583d4039.jpg?x-oss-process=image/resize,m_pad,w_750,h_750,color_ffffff",
-          "https://image7.wbiao.co/shop/78d58a91a12245a2bf9a2a3dbfc82ae9.jpg?x-oss-process=image/resize,m_pad,w_750,h_750,color_ffffff",
-          "https://image7.wbiao.co/shop/65055a890c7d467597c8832091629eec.jpg?x-oss-process=image/resize,m_pad,w_750,h_750,color_ffffff",
-          "https://image7.wbiao.co/shop/2cb46b43984146a4865f10af2670a52b.jpg?x-oss-process=image/resize,m_pad,w_750,h_750,color_ffffff"
-        ]
-      }
+      id:'',
+      goods:'',
+      serverurl:serverurl,
     };
   },
   methods: {
@@ -192,7 +183,7 @@ export default {
       if (sessionStorage.getItem('token')) {
         //购物车数量加1
         this.add(1)
-        addToShopCrt('5c98b9ef0a5efe23630748fc',1)
+        addToShopCrt(this.id,1)
         .then(res=>{
           console.log(res);
         })
@@ -205,11 +196,21 @@ export default {
           name:'Login'
         })
       }
-      
-
     },
   },
-  
+  created(){
+    //获取商品的id
+    //console.log(this.$route.params.id)
+    this.id=this.$route.params.id
+     getProductDetail(this.id)
+     .then(res=>{
+       //console.log(res)
+       this.goods=res.data;
+       //console.log(this.goods)
+     }).catch(err=>{
+       console.log(err)
+     })
+  }
 };
 </script>
 

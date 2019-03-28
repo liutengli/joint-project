@@ -158,8 +158,8 @@ export default {
     totalPrice() {
       var total = 0;
       this.List.forEach(item => {
-        total += item.product.price * 100;
-        // console.log(this.List)
+        total += (item.product.price* item.quantity) ;
+         console.log(this.List)
       });
       return total;
     },

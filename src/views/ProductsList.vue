@@ -4,14 +4,14 @@
       <ul class="clearfix">
         <li class="search01">
           <div class="wb_back">
-            <van-icon name="arrow-left" class="icon-search01"/>
+            <van-icon name="arrow-left" class="icon-search01" @click='goback'/>
           </div>
           <div class="wb_search_result">
             <van-icon name="search" class="srh_icon"/>
             <a href="javascript: void(0);" class="search_work">搜索商品</a>
           </div>
           <div class="wb_meor">
-            <van-icon name="wap-nav" class="icon-search01"/>
+            <van-icon name="wap-nav" class="icon-search01" @click='goback'/>
           </div>
         </li>
         <!-- <li class="search02">
@@ -29,12 +29,12 @@
         <van-tab title="综合排序">
           <div class="commodity">
             <!-- <lazy-component> -->
-              <a href="#" class="item01" v-for="item in products" :key="item._id">
+              <a  class="item01" v-for="item in products" :key="item._id" :href="'#/detail/'+item._id">
                 <p class="p1">
                   <img :src="serverurl+item.coverImg" alt>
                 </p>
                 <p class="p2 esp1">
-                  <em class="em_brand">{{item.coverImg}}{{item.name}}</em>
+                  <em class="em_brand"  style="color:#000;font-weight: 700;">{{item.name}}</em>
                   {{item.descriptions}}
                 </p>
                 <p class="p3">
@@ -202,14 +202,21 @@ export default {
     loadData() {
       getProducts({ page: this.page })
         .then(res => {
-          console.log(res);
+         // console.log(res);
           this.products = res.data.products;
           // this.pageCount = this.data.pages;
-          console.log(this.products);
+         // console.log(this.products);
         })
         .catch(err => {
           console.log(err);
         });
+    },
+    //返回上一页
+    goback(){
+      //window.history.back();
+      this.$router.push({
+        name:'List'
+      })
     }
   }
 };

@@ -4,7 +4,7 @@
       <a class="logo" href="#">
         <img src="../assets/imgs/head-logo.png" alt>
       </a>
-      <van-search placeholder="建行信用卡专享全场8期/12期免息" @click="searchHandle"/>
+      <van-search placeholder="建行信用卡专享全场8期/12期免息"  :class="{}"  @click="searchHandle"/>
       <a class="customer-service bgImg" href="#"></a>
     </header>
     <section>
@@ -231,6 +231,7 @@ header a img {
   padding: 0;
   width: 75%;
   background: 0;
+  border-radius:0.25rem;
 }
 .van-search__content {
   border-radius: 0.2rem;

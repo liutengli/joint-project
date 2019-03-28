@@ -29,7 +29,7 @@ const router = new Router({
       name: 'Search',
       component: Search
     },{
-      path: '/detail',
+      path: '/detail/:id',
       name: 'Detail',
       component: Detail
     },{
