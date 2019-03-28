@@ -13,13 +13,13 @@ export function login(userName,pwd){
 }
 
 /**
+ * 用户注册
  * 参数为对象形式
- * @param {*} user 
+ * @param {*} user
  * {
  * userName 用户名
  * password  密码
- * nickName  昵称
- * avatar  头像
+ *
  * }
  * 
  */
