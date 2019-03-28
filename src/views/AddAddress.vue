@@ -24,7 +24,7 @@
 </template>
 <script>
 import areaList from "../utils/area";
-import { addAddress } from "../service/user";
+import { addAddress, delAddress } from "../servers/user";
 export default {
   data() {
     return {
@@ -49,7 +49,7 @@ export default {
         idDefault: content.isDefault //是否默认
       })
         .then(res => {
-          //console.log(res);
+          console.log(res);
           if (res.data.code == "success") {
             this.$toast("添加成功");
             this.$router.push({
@@ -64,7 +64,19 @@ export default {
         });
     },
     onDelete() {
-      Toast("delete");
+      delAddress(this.$route.params.id)
+        .then(res => {
+          //console.log(res);
+          if (res.statusText == "OK") {
+            this.$toast("删除成功");
+            this.$router.push({
+              name: "Address"
+            });
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
     onChangeDetail(val) {
       if (val) {

@@ -140,7 +140,7 @@ import {
   GoodsActionBigBtn,
   GoodsActionMiniBtn
 } from "vant";
-import { getProductDetail } from '../service/products'
+import { getProductDetail } from '../servers/products'
 export default {
   components: {
     [Tag.name]: Tag,

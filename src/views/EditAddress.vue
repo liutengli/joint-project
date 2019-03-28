@@ -10,6 +10,7 @@
       <article>
         <van-address-edit
           :area-list="areaList"
+          :address-info="initAddress"
           show-delete
           show-set-default
           show-search-result
@@ -24,13 +25,18 @@
 </template>
 <script>
 import areaList from "../utils/area";
-import { editAddress } from "../service/user";
+import { editAddress, delAddress } from "../servers/user";
 export default {
   data() {
     return {
       areaList,
-      searchResult: []
+      searchResult: [],
+      initAddress: ""
     };
+  },
+  created() {
+    //console.log(this.$route.params)
+    this.initAddress = this.$route.params;
   },
   methods: {
     backHandle() {
@@ -41,7 +47,7 @@ export default {
       //console.log(content.isDefault);
       const regions =
         content.province + "-" + content.city + "-" + content.county;
-      //console.log(this.$route.params)
+      //console.log(this.$route.params.id)
       editAddress(this.$route.params.id, {
         receiver: content.name, //姓名
         mobile: content.tel, //手机
@@ -50,14 +56,11 @@ export default {
         idDefault: content.isDefault //是否默认
       })
         .then(res => {
-          //console.log(res);
-          if (res.data.code == "success") {
+          if (res.statusText == "OK") {
             this.$toast("保存成功");
             this.$router.push({
               name: "Address"
             });
-          } else {
-            this.$toast(res.data.message);
           }
         })
         .catch(err => {
@@ -65,7 +68,19 @@ export default {
         });
     },
     onDelete() {
-      Toast("delete");
+      delAddress(this.$route.params.id)
+        .then(res => {
+          //console.log(res);
+          if (res.statusText == "OK") {
+            this.$toast("删除成功");
+            this.$router.push({
+              name: "Address"
+            });
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
     onChangeDetail(val) {
       if (val) {

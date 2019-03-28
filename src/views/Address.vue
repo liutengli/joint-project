@@ -23,7 +23,8 @@
   </div>
 </template>
 <script>
-import { addressList } from "../service/user";
+import { addressList } from "../servers/user";
+import { constants } from 'fs';
 export default {
   data() {
     return {
@@ -49,17 +50,12 @@ export default {
             id: "",
             name: "",
             tel: "",
-            address: ""
+            address: "",
           };
           addr.id = item._id;
           addr.name = item.receiver;
           addr.tel = item.mobile;
           addr.address = item.regions + " " + item.address;
-          if (item.isDefault) {
-            this.chosenAddressId = item._id;
-          } else {
-            this.chosenAddressId = "5c9c8a299c9ebd0561cc4ace";
-          }
           this.list.push(addr);
         });
       })
@@ -69,12 +65,10 @@ export default {
   },
   methods: {
     onEdit(item, index) {
-      //console.log(this.list[index].id);
       this.$router.push({
         name: "EditAddress",
-        params: {id:this.list[index].id}
+        params: this.list[index]
       });
-      //Toast("编辑地址:" + index);
     },
     backHandle() {
       this.$router.back();

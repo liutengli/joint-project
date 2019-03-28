@@ -79,7 +79,7 @@
 
 <script>
 import { Checkbox, CheckboxGroup, Card, SubmitBar, Toast } from "vant";
-import { getShopCart, DelShopCartList } from "../service/user.js";
+import { getShopCart, DelShopCartList } from "../servers/user.js";
 import { serverurl } from "../utils/config";
 
 export default {
