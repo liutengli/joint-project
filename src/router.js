@@ -1,27 +1,51 @@
 import Vue from 'vue'
-import Router from 'vue-router';
+import Router from 'vue-router'
 
-import ShopCart from './views/ShopCart.vue'
 import Index from './views/Index.vue'
+import Search from './views/Search.vue'
+import Detail from './views/Detail.vue'
+import List from './views/List.vue'
+import ShopCart from './views/ShopCart.vue'
+import UserCenter from './views/UserCenter.vue'
 import Login from './views/Login.vue'
 import Reg from './views/Reg.vue'
-import UserCenter from './views/UserCenter.vue'
-import setting from './components/setting.vue'
+import Setting from './views/Setting.vue'
+import Address from './views/Address.vue'
+import AddAddress from './views/AddAddress.vue'
+
 //使用vue-router
 Vue.use(Router)
-
-const router =new Router({
+const router = new Router({
   //路由表
-  routes:[
-    {
-      path:'/shopcart',
-      name:'ShopCart',
-      component:ShopCart
-    },
+  routes: [
     {
       path: '/',
-      name: 'index',
+      name: 'Index',
       component: Index
+    }, {
+      path: '/search',
+      name: 'Search',
+      component: Search
+    },{
+      path: '/detail',
+      name: 'Detail',
+      component: Detail
+    },{
+      path: '/address',
+      name: 'Address',
+      component: Address
+    },{
+      path: '/add-address',
+      name: 'AddAddress',
+      component: AddAddress
+    },{
+      path: '/shopcart',
+      name: 'ShopCart',
+      component: ShopCart
+    },{
+      path: '/list',
+      name: 'List',
+      component: List,
     },
     {
       path:'/login',
@@ -32,16 +56,14 @@ const router =new Router({
       path:'/reg',
       name:'Reg',
       component:Reg
-    },
-    {
+    },{
       path:'/usercenter',
       name:'UC',
       component:UserCenter,
-    },
-    {
+    } ,{
       path:'/setting',
       name:'Setting',
-      component:setting,
+      component:Setting,
       meta:{
         needLogin:true
       }
@@ -63,8 +85,6 @@ import {isLogin} from './utils/auth'
     next();
   }
 })
-
-
 
 
 
