@@ -8,7 +8,7 @@
           </div>
           <div class="wb_search_result">
             <van-icon name="search" class="srh_icon"/>
-            <a href="javascript: void(0);" class="search_work">搜索商品</a>
+            <a href="javascript: void(0);" class="search_work" @click="searchProductsHandle">搜索商品</a>
           </div>
           <div class="wb_meor">
             <van-icon name="wap-nav" class="icon-search01" @click='goback'/>
@@ -196,6 +196,11 @@ export default {
     this.loadData();
   },
   methods: {
+     searchProductsHandle() {
+      this.$router.push({
+        name:'Search'
+      })
+    },
     isShow() {
       this.show = !this.show;
     },
@@ -301,6 +306,9 @@ img {
 .search_work {
   font-size: 14px;
   color: #999;
+  display: inline-block;
+  height: 100%;
+  width: 85%
 }
 .search02 form {
   margin-left: 0.12rem;
