@@ -9,7 +9,7 @@
     <section>
       <article>
         <van-address-list
-          v-model="chosenAddressId"
+          v-model="list.id"
           :list="list"
           :disabled-list="disabledList"
           disabled-text="以下地址超出配送范围"
@@ -65,6 +65,8 @@ export default {
   },
   methods: {
     onEdit(item, index) {
+      //Toast("编辑地址:" + index);
+      console.log(item.id)
       this.$router.push({
         name: "EditAddress",
         params: this.list[index]

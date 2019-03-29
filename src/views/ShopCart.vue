@@ -42,7 +42,7 @@
                   :title="p.product.name"
                   :thumb="serverurl+p.product.coverImg"
                   :origin-price="200"
-                  :thumb-link="`#/list/${p.product._id}`"
+                  :thumb-link="`#/detail/${p.product._id}`"
                 />
               </div>
               <!-- 编辑时显示 -->
@@ -81,6 +81,7 @@
 import { Checkbox, CheckboxGroup, Card, SubmitBar, Toast } from "vant";
 import { getShopCart, DelShopCartList } from "../servers/user.js";
 import { serverurl } from "../utils/config";
+import { mapState, mapMutations, mapActions } from 'vuex';
 
 export default {
   data() {
@@ -95,6 +96,7 @@ export default {
     };
   },
   methods: {
+     ...mapMutations(['Initcounter']), // 把vuex中的mutations映射到methods
     showDel() {
       this.shopdel = !this.shopdel;
       this.checked = false;
@@ -106,7 +108,7 @@ export default {
       }else{
         this.List=[]
       }
-      console.log(this.checked)
+      //console.log(this.checked)
     },
     DelShopHandle(id) {
       DelShopCartList(id)
@@ -127,6 +129,8 @@ export default {
       getShopCart()
         .then(res => {
           this.shoplist = res.data;
+          //counter=22
+          this.Initcounter(this.ShopCartAllcount)
         })
         .catch(err => {
           console.log(err);
@@ -147,14 +151,15 @@ export default {
       }else{
         this.disabled=true
       }
-    }
+    },
   },
   computed: {
+    ...mapState(['counter']), // 使用...
     totalPrice() {
       var total = 0;
       this.List.forEach(item => {
-        total += item.product.price * 100;
-        // console.log(this.List)
+        total += (item.product.price* item.quantity) ;
+         //console.log(this.List)
       });
       return total;
     },
@@ -168,6 +173,13 @@ export default {
       } else {
         return "结算";
       }
+    },
+    ShopCartAllcount(){
+      var count=0;
+      this.shoplist.forEach(q=>{
+        count+=q.quantity
+      })
+      return count;
     }
   },
   created() {
@@ -178,7 +190,7 @@ export default {
     [Checkbox.name]: Checkbox,
     [SubmitBar.name]: SubmitBar,
     [CheckboxGroup.name]: CheckboxGroup
-  }
+  },
 };
 </script>
 

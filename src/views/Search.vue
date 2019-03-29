@@ -3,6 +3,7 @@
     <header>
       <form action="/">
         <van-search
+          :class="{'v-search':true}"
           v-model="value"
           placeholder="搜索商品"
           show-action
@@ -32,29 +33,42 @@
 export default {
   data(){
     return {
-
+      value:''
     }
   },
   methods:{
     onCancel(){
-       this.$router.push({
+      /*  this.$router.push({
           name:'Index'
-        })
+        }) */
+      //跳回上一页
+      window.history.back()
+    },
+    onSearch(){
+
     }
   }
 };
 </script>
 <style scoped>
 header {
-  height: 0.34rem;
+  height: 0.45rem;
   border-bottom: 0.01rem solid #ccc;
+  background:#fff;
 }
 form {
   width: 100%;
+  height:100%
 }
 .van-search {
   width: 97%;
   margin-left: 2%;
+   height:100%
+}
+.v-search >>> .van-search__content{
+  background:#f1f1f1 !important;
+  border-radius:0.2rem;
+  height:0.34rem;
 }
 .van-search__action {
   color: #1989fa;

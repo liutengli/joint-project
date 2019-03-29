@@ -5,7 +5,7 @@
       <van-tabbar v-model="active" @change="changeHande">
         <van-tabbar-item icon="wap-home">首页</van-tabbar-item>
         <van-tabbar-item icon="comment-o">选表</van-tabbar-item>
-        <van-tabbar-item icon="shopping-cart-o" :to="{name:'ShopCart'}">购物车</van-tabbar-item>
+        <van-tabbar-item icon="shopping-cart-o" :to="{name:'ShopCart'}" :info='counter'>购物车</van-tabbar-item>
         <van-tabbar-item icon="manager-o">我的</van-tabbar-item>
       </van-tabbar>
     </div>
@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { mapState ,mapMutations} from "vuex";
+import { getShopCart } from "./servers/user.js";
 
 export default {
   created() {
@@ -27,6 +29,7 @@ export default {
         this.active = 2;
       }
     });
+    this.cartList();
   },
   data() {
     return {
@@ -34,6 +37,20 @@ export default {
     };
   },
   methods: {
+     ...mapMutations(['Initcounter']), // 把vuex中的mutations映射到
+    cartList(){
+      var count=0;
+      getShopCart()
+      .then(res=>{
+        console.log(res)
+        res.data.forEach(p=>{
+          count+=p.quantity;
+        })
+        this.Initcounter(count)
+      }).catch(err=>{
+        console.log(err)
+      })
+    },
     changeHande() {
       switch (this.active) {
         case 0:
@@ -57,7 +74,10 @@ export default {
           });
           break;
       }
-    }
+    },
+  },
+  computed: {
+    ...mapState(['counter']), // 使用...
   }
 };
 </script>

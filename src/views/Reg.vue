@@ -24,7 +24,7 @@
   </div>
 </template>
 <script>
-import { post } from "axios";
+import { reg } from "../servers/user.js";
 export default {
   data() {
     return {
@@ -45,10 +45,8 @@ export default {
       if (this.userName == "" || this.password == "") {
         this.$toast("用户名和密码不能为空");
       } else {
-        post("http://api.cat-shop.penkuoer.com/api/v1/auth/reg", {
-          userName: this.userName,
-          password: this.password
-        })
+        //调用注册方法
+        reg({'userName':this.userName,'password':this.password})
           .then(res => {
             //console.log(res);
             if (res.data.code == "success") {

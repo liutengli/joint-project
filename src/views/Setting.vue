@@ -16,13 +16,16 @@
 </template>
 <script>
 import { loginOut } from "../utils/auth.js";
+import {  mapMutations} from 'vuex';
 export default {
   methods: {
+     ...mapMutations(['Initcounter']), // 把vuex中的mutations映射到
     onClickLeft() {
       this.$router.back(-1);
     },
     OnClickLoginOut() {
       loginOut();
+      this.Initcounter(0)
       this.$router.push({
         name: "Login"
       });
@@ -59,8 +62,8 @@ main {
   margin: 0 auto;
   position: fixed;
   bottom: 0rem;
-  height: 50px;
-  line-height: 50px;
+  height: 65px;
+  line-height: 65px;
   background: #bbb;
 }
 .W-bottom-btn a {
