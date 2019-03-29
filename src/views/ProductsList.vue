@@ -174,10 +174,7 @@ export default {
     loadData() {
       getProducts({ page: this.page })
         .then(res => {
-         // console.log(res);
           this.products = res.data.products;
-          // this.pageCount = this.data.pages;
-         // console.log(this.products);
         })
         .catch(err => {
           console.log(err);
@@ -185,10 +182,7 @@ export default {
     },
     //返回上一页
     goback(){
-      //window.history.back();
-      this.$router.push({
-        name:'List'
-      })
+      this.$router.back();
     }
   }
 };
@@ -290,7 +284,6 @@ img {
   font-size: 14px;
   width: 44px;
   text-align: center;
-  /* background-color: pink; */
 }
 .input_search {
   width: 82%;
@@ -301,7 +294,6 @@ img {
   border: none;
   box-sizing: border-box;
   padding-left: 6px;
-  /* background-color: aqua; */
 }
 .icon-search02 {
   position: absolute;
@@ -314,8 +306,6 @@ img {
   margin-top: 45px;
   font-size: 14px;
   position: relative;
-  /* top: 45px;
-    left: 0; */
 }
 .nav_content {
   padding-top: 44px !important;
@@ -363,7 +353,6 @@ img {
   color: #333;
 }
 .mc_main {
-  /* position: relative; */
   margin-top: 44px;
 }
 .mc_severse {
@@ -476,10 +465,6 @@ img {
   border-top: 1px solid #ccc;
   background: #fff;
   color: #333;
-  /* position: fixed !important;
-    right: 0;
-    bottom: 0;
-    z-index: 2; */
 }
 .clear_btn,
 .ensure_btn {
@@ -524,7 +509,6 @@ img {
   height: 220px;
 }
 .commodity .item01 .p1 img {
-  /* width: auto; */
   height: 100%;
   width: 100%;
 }

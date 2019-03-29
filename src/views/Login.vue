@@ -50,7 +50,7 @@ export default {
           if (res.data.code == "success") {
             loginIn(this.userName, res.data.token);
             //获取购物车总数
-             this.cartList();
+            this.cartList();
             this.$eventBus.$emit("navToZX", "UC");
             this.$router.push({
               name: "UC"
@@ -62,7 +62,7 @@ export default {
           }
         })
         .catch(err => {
-          this.$toast(err);
+          console.log(err);
         });
     },
     onClickRight() {

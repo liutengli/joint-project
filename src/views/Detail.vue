@@ -33,7 +33,7 @@
       </van-cell>
       <van-cell class="goods-express">
         <van-col span="10">顺丰包邮</van-col>
-        <van-col span="14">销售：{{ goods.remain }}</van-col>
+        <van-col span="14">库存：{{ goods.quantity }}</van-col>
       </van-cell>
     </van-cell-group>
 
@@ -42,7 +42,7 @@
         <span>...</span>
         <template slot="title">
           <i class="title2">分期</i>
-          <span class="van-cell-text">每月194.3 元x12期</span>
+          <span class="van-cell-text">每月还一点</span>
           <van-tag class="goods-tag" type="danger">免息免手续费</van-tag>
         </template>
       </van-cell>
@@ -165,19 +165,17 @@ export default {
       serverurl:serverurl,
     };
   },
-  create(){
-    //this.id = this.$route.params.id;
-    //get(serverUrl+"/goodsbyid.do", { params: { id: this.id }})
-     console.log("bbb")
-    getProductDetail(1)
-      .then(res => {
-        console.log("aaa")
-        console.log(res);
-        this.product=res.data
-      })
-      .catch(err => {
-        console.log(err);
-      });
+   created(){
+    //获取商品的id
+    //console.log(this.$route.params.id)
+    this.id=this.$route.params.id
+     getProductDetail(this.id)
+     .then(res=>{
+       console.log(res)
+       this.goods=res.data;
+     }).catch(err=>{
+       console.log(err)
+     })
   },
   methods: {
       ...mapMutations(['add']), // 把vuex中的mutations映射到methods
@@ -199,7 +197,7 @@ export default {
         this.add(1)
         addToShopCrt(this.id,1)
         .then(res=>{
-          //console.log(res);
+          this.$toast("加入购物车成功");
         })
         .catch(err=>{
           console.log(err);
@@ -210,20 +208,7 @@ export default {
           name:'Login'
         })
       }
-    },
-  },
-  created(){
-    //获取商品的id
-    //console.log(this.$route.params.id)
-    this.id=this.$route.params.id
-     getProductDetail(this.id)
-     .then(res=>{
-       //console.log(res)
-       this.goods=res.data;
-       //console.log(this.goods)
-     }).catch(err=>{
-       console.log(err)
-     })
+    }
   }
 };
 </script>
@@ -257,7 +242,6 @@ export default {
 }
 .W_title ul a {
   color: #666;
-  /*  border-bottom: 0.02rem solid #333; */
 }
 .W_title .header-right {
   font-size: 0.22rem;

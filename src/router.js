@@ -36,7 +36,10 @@ const router = new Router({
     },{
       path: '/address',
       name: 'Address',
-      component: Address
+      component: Address,
+      meta:{//元标签
+        needLogin:true,//需要登录
+      }
     },{
       path: '/add-address',
       name: 'AddAddress',

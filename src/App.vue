@@ -42,7 +42,7 @@ export default {
       var count=0;
       getShopCart()
       .then(res=>{
-        console.log(res)
+        //console.log(res)
         res.data.forEach(p=>{
           count+=p.quantity;
         })

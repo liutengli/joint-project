@@ -57,7 +57,7 @@ export default {
       })
         .then(res => {
           if (res.statusText == "OK") {
-            this.$toast("保存成功");
+            this.$toast("保存成功!");
             this.$router.push({
               name: "Address"
             });
