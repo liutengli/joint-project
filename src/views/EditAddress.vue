@@ -70,7 +70,6 @@ export default {
     onDelete() {
       delAddress(this.$route.params.id)
         .then(res => {
-          //console.log(res);
           if (res.statusText == "OK") {
             this.$toast("删除成功");
             this.$router.push({

@@ -14,14 +14,6 @@
             <van-icon name="wap-nav" class="icon-search01"/>
           </div>
         </li>
-        <!-- <li class="search02">
-          <form action="">
-            <van-icon name="search" class="srh_icon"/>
-            <input type="search" class="input_search" placeholder="搜索商品" maxlength="30">
-            <van-icon name="cross" class="icon-search01 icon-search02" />
-          </form>
-          <a href="javascript: void(0);" class="right_back">取消</a>
-        </li>-->
       </ul>
     </header>
     <nav class="nav01">
@@ -46,31 +38,6 @@
                   <span>水蓝版</span>
                 </p>
               </a>
-            <!-- </lazy-component> -->
-
-
-            <!-- <a href="#" class="item01">
-              <p class="p1">
-                <img src="../assets/imgs/1.jpg" alt>
-              </p>
-              <p class="p2 esp1">
-                <em class="em_brand">爱宝时</em>
-                Emotion情感系列 机械男表
-              </p>
-              <p class="p3">
-                ￥5,770
-                <del>￥9,300</del>
-              </p>
-              <p class="p4">
-                <span>自营</span>
-                <span>水蓝版</span>
-              </p>
-            </a>
-            <div class="adSenseImg">
-              <a href="#">
-                <img src="../assets/imgs/1.jpg" alt>
-              </a>
-            </div>-->
           </div>
         </van-tab>
         <van-tab title="销量领先">销量领先</van-tab>
