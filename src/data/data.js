@@ -33,3 +33,102 @@ export const gundongImgs = [
   'https://image7.wbiao.co/mall/99669c96197b42ad9344b71df1a3b3e2.jpg',
   'https://image7.wbiao.co/mall/c6433c32716f496387d1fff772dd2044.jpg'
 ];
+
+
+
+export const productsImg1 = [
+  {
+    src: 'https://image7.wbiao.co/mall/796e1ae174b144c09d0615cca66b7426.png',
+    name: '机械表'
+  },
+  {
+    src: 'https://image7.wbiao.co/mall/824cd8f7feae4978b1f14b25ae5bf50c.png',
+    name: '石英表'
+  },
+  {
+    src: 'https://image7.wbiao.co/mall/484db415cecb4cc39ab2cb334a62d0f2.png',
+    name: '钢带手表'
+  },
+  {
+    src: 'https://image7.wbiao.co/mall/e491533b98964561af22ac11654722f3.png',
+    name: '商务休闲'
+  },
+  {
+    src: 'https://image7.wbiao.co/mall/f75e6f9068484f63835c9777de06ac5d.png',
+    name: '男表'
+  },
+  {
+    src: 'https://image7.wbiao.co/mall/604c31a40d6140eba748f611387acd18.png',
+    name: '女表'
+  }
+];
+
+export const productsImg2 = [
+  {
+    src: 'https://image7.wbiao.co/mall/fadee736ccc440e39ed1771057a0b8ca.png',
+    name: '瑞士表'
+  },
+  {
+    src: 'https://image7.wbiao.co/mall/c8a9f501ea264f11ad6e7ea715378d2c.png',
+    name: '欧美表'
+  },
+  {
+    src: 'https://image7.wbiao.co/mall/e425a5030a4840f5b9978975ea0365fa.png',
+    name: '日系表'
+  },
+  {
+    src: 'https://image7.wbiao.co/mall/f7e7df5f626b4d16abeb880651ddc18d.png',
+    name: '国产表'
+  },
+  {
+    src: 'https://image7.wbiao.co/mall/c36ff63886e14b70922d779204b18ada.png',
+    name: '德国表'
+  },
+  {
+    src: 'https://image7.wbiao.co/mall/60166347abf7481d9b6ad9617d0c15da.png',
+    name: '法师表'
+  }
+];
+
+export const productsImg3 = [
+  {
+    src: 'https://image7.wbiao.co/mall/24401fd69f1a45ee97bf511456837a38.png',
+    name: '劳力士'
+  },
+  {
+    src: 'https://image7.wbiao.co/mall/aba52ed1b9de43fd878ca52b35ff1a33.png',
+    name: '赫柏林'
+  },
+  {
+    src: 'https://image7.wbiao.co/mall/19878ab3ee46481186ba218b7e9c58d3.png',
+    name: '浪琴'
+  },
+  {
+    src: 'https://image7.wbiao.co/mall/7cb312199d114c3fbaa3d0c52f6646ab.png',
+    name: '爱宝时'
+  },
+  {
+    src: 'https://image7.wbiao.co/mall/1ce82b5144e84244821009ab00416e6c.png',
+    name: '东方星'
+  },
+  {
+    src: 'https://image7.wbiao.co/mall/aba7ad5e850340a197b058401fc9be03.png',
+    name: '欧米茄'
+  },
+  {
+    src: 'https://image7.wbiao.co/mall/0421637d0e4f4d1e9e8a45922100021f.png',
+    name: '豪利时'
+  },
+  {
+    src: 'https://image7.wbiao.co/mall/24f0e844a43947e2aa1c5d5450c104f6.png',
+    name: '库尔沃'
+  },
+  {
+    src: 'https://image7.wbiao.co/mall/68e6557c8fb046908393475092954b2c.png',
+    name: '天梭'
+  },
+  {
+    src: 'https://image7.wbiao.co/mall/0421637d0e4f4d1e9e8a45922100021f.png',
+    name: '迪沃斯'
+  }
+]

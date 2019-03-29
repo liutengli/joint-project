@@ -183,6 +183,7 @@ export default {
       return "¥" + this.goods.price;
     },
     onClickCart() {
+      this.$eventBus.$emit("navToZX", "ShopCart");
       this.$router.push({name:'ShopCart'});
     },
     sorry() {
@@ -291,7 +292,7 @@ export default {
   margin: 0.1rem 0;
 }
 .van-cell-text1 {
-  font-weight: 600; 
+  font-weight: 600;
   color: #333;
 }
 .van-cell-text {

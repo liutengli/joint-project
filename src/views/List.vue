@@ -6,57 +6,25 @@
           <van-icon name="search" class="srh_icon icon-a-search01"/>
           <a href="javascript: void(0);" class="search_work" @click="searchProductsHandle">搜索商品</a>
         </li>
-        <!-- <li class="wb_title_middle wb_search">
-          <form action="">
-            <van-icon name="search" class="srh_icon icon-a-search01"/>
-            <input type="search" class="input_search" placeholder="搜索商品" maxlength="30">
-            <span class="clean_search">
-              <van-icon name="cross" class="icon-a-close02" @click="noSearchHandle"/>
-            </span>
-          </form>
-        </li> -->
-       <!--  <li class="rewrite_right srh_cancel">
-          <a href="javascript: void(0);" class="right_back" @click="noSearchHandle">取消</a>
-        </li> -->
       </ul>
     </header>
     <section class="main">
       <div class="scroll_wrap scroll_wrap_left">
-        <ul class="two_stage_title">
-          <li class="on">
-            <a href="javascript:void(0)">推荐</a>
+        <ul class="two_stage_title" >
+          <li v-for="(item, index) in 4" :key="index" @click="changeBgc(index)" :class="{active: index == isActive}">
+            <a href="javascript:void(0)" data-code="index">{{index}}推荐</a>
           </li>
-          <li>
-            <a href="javascript:void(0)" category-code='3'>顶级品牌</a>
-          </li>
-          <li>
-            <a href="javascript:void(0)" category-code='4'>奢华品牌</a>
-          </li>
-          <li>
-            <a href="javascript:void(0)" category-code='1029'>高级品牌</a>
-          </li>
-          <li>
-            <a href="javascript:void(0)" category-code='5'>轻奢时尚</a>
-          </li>
-          <li>
-            <a href="javascript:void(0)" category-code='6'>年轻潮牌</a>
-          </li>
-          <li>
-            <a href="javascript:void(0)" category-code='7'>国产智能</a>
-          </li>
-          <li>
-            <a href="javascript:void(0)" category-code='8'>表带</a>
-          </li>
-          <li>
-            <a href="javascript:void(0)" category-code='1003'>维护保养</a>
+          <!-- <li class="on">
+            <a href="javascript:void(0)">推荐 顶级品牌 奢华品牌 高级品牌 轻奢时尚 年轻潮牌 国产智能 表带 维护保养</a>
           </li>
           <li class="not_goods-category">
             <a href="javascript:void(0)">二手商城</a>
-          </li>
+          </li> -->
 
         </ul>
       </div>
       <div class="scroll_wrap scroll_wrap_right">
+        <div ></div>
         <div class="gnTabs_block">
           <div class="act_img">
             <a href="#"><img src="../assets/imgs/1.jpg" alt=""></a>
@@ -68,12 +36,12 @@
           </p>
           <div class="sort_list sort_list_01">
             <ul class="clearfix">
-              <li v-for="index in 5" :key="index">
+              <li v-for="(item, index) in productsImg1" :key="index">
                 <a href="#/productslist">
                   <p class="p_img">
-                    <img src="../assets/imgs/2.png" alt="">
+                    <img :src="item.src" alt="">
                   </p>
-                  <p class="p_txt">机械表</p>
+                  <p class="p_txt">{{item.name}}</p>
                 </a>
               </li>
 
@@ -86,12 +54,12 @@
           </p>
           <div class="sort_list sort_list_01">
             <ul class="clearfix">
-              <li v-for="index in 5" :key="index">
+              <li v-for="(item, index) in productsImg2" :key="index">
                 <a href="#/productslist">
                   <p class="p_img">
-                    <img src="../assets/imgs/2.png" alt="">
+                    <img :src="item.src" alt="">
                   </p>
-                  <p class="p_txt">机械表</p>
+                  <p class="p_txt">{{item.name}}</p>
                 </a>
               </li>
             </ul>
@@ -103,12 +71,12 @@
           </p>
           <div class="sort_list sort_list_01">
             <ul class="clearfix">
-              <li v-for="index in 8" :key="index">
+              <li v-for="(item, index) in productsImg3" :key="index">
                 <a href="#/productslist">
                   <p class="p_img">
-                    <img src="../assets/imgs/2.png" alt="">
+                    <img :src="item.src" alt="">
                   </p>
-                  <p class="p_txt">机械表</p>
+                  <p class="p_txt">{{item.name}}</p>
                 </a>
               </li>
             </ul>
@@ -123,35 +91,29 @@
   </div>
 </template>
 <script>
+import { productsImg1, productsImg2, productsImg3 } from "../data/data";
 export default {
   data() {
     return {
-
+      productsImg1,
+      productsImg2,
+      productsImg3,
+      twoList: [],
+      isActive: '',
     }
   },
   created() {
 
   },
   methods: {
+    changeBgc(index){
+      this.isActive = index;
+    },
     searchProductsHandle() {
-      /* const wsr = document.querySelector('.wb_search_result');
-      const ws = document.querySelector('.wb_search');
-      const rr = document.querySelector('.rewrite_right')
-      wsr.style.display = 'none';
-      ws.style.display = 'block';
-      rr.style.display = 'block'; */
       this.$router.push({
         name:'Search'
       })
     },
-   /*  noSearchHandle() {
-      const wsr = document.querySelector('.wb_search_result');
-      const ws = document.querySelector('.wb_search');
-      const rr = document.querySelector('.rewrite_right')
-      wsr.style.display = 'block';
-      ws.style.display = 'none';
-      rr.style.display = 'none';
-    } */
   }
 }
 </script>
@@ -166,6 +128,17 @@ export default {
   }
   a {
     border: none;
+  }
+  .scroll_wrap_left {
+    position: fixed;
+    top: 0.45rem;
+    left: 0;
+  }
+  .scroll_wrap_left .active a {
+    background: #999;
+    color: #fff;
+    border-radius: 100px;
+    border-bottom: 0;
   }
   .list {
     display: flex;
@@ -265,6 +238,7 @@ export default {
   .main {
     padding-top: 0.44rem;
     padding-bottom: 0.65rem;
+    background: #fff;
   }
   .scroll_wrap {
     display: inline-block;
@@ -275,7 +249,7 @@ export default {
   .scroll_wrap_left li {
     height: auto;
     float: none;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid #ddd;
     text-align: center;
   }
   .scroll_wrap_left li a {
@@ -298,6 +272,7 @@ export default {
     transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1);
     transition-duration: 0ms;
     transform: translate(0px, 0px) translateZ(0px);
+    float: right;
   }
   .act_img a {
     display: block;
@@ -348,7 +323,8 @@ export default {
     border-radius: 50%;
   }
   .sort_list a .p_img {
-    width: 60px;
+    /* width: 60px; */
+    width: 60%;
     height: 60px;
     margin: 0 auto 3px;
     overflow: hidden;

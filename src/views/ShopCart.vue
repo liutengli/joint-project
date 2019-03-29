@@ -158,7 +158,7 @@ export default {
     totalPrice() {
       var total = 0;
       this.List.forEach(item => {
-        total += (item.product.price* item.quantity) ;
+        total += (item.product.price* item.quantity*100) ;
          //console.log(this.List)
       });
       return total;

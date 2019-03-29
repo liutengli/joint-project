@@ -4,14 +4,14 @@
       <ul class="clearfix">
         <li class="search01">
           <div class="wb_back">
-            <van-icon name="arrow-left" class="icon-search01" @click='goback'/>
+            <van-icon name="arrow-left" class="icon-search01" @click="goback"/>
           </div>
           <div class="wb_search_result">
             <van-icon name="search" class="srh_icon"/>
             <a href="javascript: void(0);" class="search_work" @click="searchProductsHandle">搜索商品</a>
           </div>
           <div class="wb_meor">
-            <van-icon name="wap-nav" class="icon-search01" @click='goback'/>
+            <van-icon name="wap-nav" class="icon-search01" @click="goback"/>
           </div>
         </li>
       </ul>
@@ -20,17 +20,24 @@
       <van-tabs v-model="active" class="nav_content">
         <van-tab title="综合排序">
           <div class="commodity">
-            <!-- <lazy-component> -->
-              <a  class="item01" v-for="item in products" :key="item._id" :href="'#/detail/'+item._id">
+            <vue-waterfall-easy
+              :imgsArr="products"
+              @scrollReachBottom="loadData"
+              class="zujian"
+              :maxCols="maxCols"
+              ref="waterfall"
+            >
+              <!-- 在组件中已经进行了数据循环，不需要再次v-for循环,props 是循环返回的数据 -->
+              <a slot-scope="props" class="item01" :href="'#/detail/'+props.value._id">
                 <p class="p1">
-                  <img :src="serverurl+item.coverImg" alt>
+                  <img :src="serverurl+props.value.coverImg" alt>
                 </p>
                 <p class="p2 esp1">
-                  <em class="em_brand"  style="color:#000;font-weight: 700;">{{item.name}}</em>
-                  {{item.descriptions}}
+                  <em class="em_brand">{{props.value.name}}</em>
+                  {{props.value.descriptions}}
                 </p>
                 <p class="p3">
-                  ￥{{item.price}}
+                  ￥{{props.value.price}}
                   <del>￥9,300</del>
                 </p>
                 <p class="p4">
@@ -38,6 +45,7 @@
                   <span>水蓝版</span>
                 </p>
               </a>
+            </vue-waterfall-easy>
           </div>
         </van-tab>
         <van-tab title="销量领先">销量领先</van-tab>
@@ -147,8 +155,10 @@
 <script>
 import { getProducts } from "../servers/products";
 import { serverurl } from "../utils/config";
+import vueWaterfallEasy from "vue-waterfall-easy";
 
 export default {
+  // name: 'app',
   data() {
     return {
       active: 0,
@@ -156,17 +166,22 @@ export default {
       page: 1,
       products: [],
       pageCount: 1, //总页数
-      serverurl
+      serverurl,
+      group: 0,
+      maxCols: 3
     };
+  },
+  components: {
+    vueWaterfallEasy
   },
   created() {
     this.loadData();
   },
   methods: {
-     searchProductsHandle() {
+    searchProductsHandle() {
       this.$router.push({
-        name:'Search'
-      })
+        name: "Search"
+      });
     },
     isShow() {
       this.show = !this.show;
@@ -174,14 +189,23 @@ export default {
     loadData() {
       getProducts({ page: this.page })
         .then(res => {
-          this.products = res.data.products;
+          // console.log(res);
+          this.group++;
+          if (this.group === 3) {
+            // 模拟已经无新数据，显示 slot="waterfall-over"
+            this.$refs.waterfall.waterfallOver();
+            return;
+          }
+          this.products = this.products.concat(res.data.products);
+          this.page += 1;
+          console.log(this.products);
         })
         .catch(err => {
           console.log(err);
         });
     },
     //返回上一页
-    goback(){
+    goback() {
       this.$router.back();
     }
   }
@@ -203,6 +227,9 @@ img {
   display: block;
   border: none;
 }
+/* #app {
+  padding-bottom: 0;
+} */
 .w_title {
   width: 100%;
   height: 0.44rem;
@@ -269,7 +296,7 @@ img {
   color: #999;
   display: inline-block;
   height: 100%;
-  width: 85%
+  width: 85%;
 }
 .search02 form {
   margin-left: 0.12rem;
@@ -311,7 +338,7 @@ img {
   padding-top: 44px !important;
   width: 100%;
   z-index: 1;
-  padding-bottom: 65px !important;
+  /* padding-bottom: 65px !important; */
 }
 .toFilter {
   width: 24%;
@@ -486,15 +513,20 @@ img {
   color: #fff;
   background: #d90000;
 }
+/* 给组件里的节点添加样式 */
+.zujian >>> .vue-waterfall-easy-scroll[data-v-ded6b974] {
+  height: 500px;
+}
 .commodity {
   width: 100%;
   overflow: hidden;
   background: #f1f1f1;
+  padding-bottom: 16px;
 }
 .commodity .item01 {
   float: left;
-  width: 49.067%;
-  height: 320px;
+  width: 100%;
+  height: 300px;
   background: #fff;
   margin-top: 8px;
 }
@@ -506,7 +538,7 @@ img {
   position: relative;
   overflow: hidden;
   margin-top: 12px;
-  height: 220px;
+  height: 200px;
 }
 .commodity .item01 .p1 img {
   height: 100%;
