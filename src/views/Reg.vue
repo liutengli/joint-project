@@ -48,7 +48,7 @@ export default {
         //调用注册方法
         reg({'userName':this.userName,'password':this.password})
           .then(res => {
-            console.log(res);
+            //console.log(res);
             if (res.data.code == "success") {
               this.$toast("注册成功");
               this.$router.push({

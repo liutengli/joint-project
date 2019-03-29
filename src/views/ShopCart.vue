@@ -197,7 +197,6 @@ export default {
 <style scoped>
 .app {
   color: #666;
- 
 }
 .cart-title {
   width: 100%;
@@ -249,12 +248,6 @@ section {
   float: left;
   z-index: 22;
 }
-/* .h .van-icon-success {
-  display: flex !important;
-}
-.h >>> i.van-icon {
-  float: left !important;
-} */
 .shop-desc {
   height: 0.98rem;
   margin-top: 0.18rem;

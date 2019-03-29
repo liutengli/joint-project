@@ -156,7 +156,7 @@ export default {
     [SwipeItem.name]: SwipeItem,
     [GoodsAction.name]: GoodsAction,
     [GoodsActionBigBtn.name]: GoodsActionBigBtn,
-    [GoodsActionMiniBtn.name]: GoodsActionMiniBtn
+    [GoodsActionMiniBtn.name]: GoodsActionMiniBtn,
   },
   data() {
     return {
@@ -164,6 +164,20 @@ export default {
       goods:'',
       serverurl:serverurl,
     };
+  },
+  create(){
+    //this.id = this.$route.params.id;
+    //get(serverUrl+"/goodsbyid.do", { params: { id: this.id }})
+     console.log("bbb")
+    getProductDetail(1)
+      .then(res => {
+        console.log("aaa")
+        console.log(res);
+        this.product=res.data
+      })
+      .catch(err => {
+        console.log(err);
+      });
   },
   methods: {
       ...mapMutations(['add']), // 把vuex中的mutations映射到methods
