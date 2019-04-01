@@ -37,7 +37,7 @@ export default {
       this.$router.back();
     },
     onSave(content) {
-      //console.log(content);
+      console.log(content);
       //console.log(content.isDefault);
       const regions =
         content.province + "-" + content.city + "-" + content.county;
